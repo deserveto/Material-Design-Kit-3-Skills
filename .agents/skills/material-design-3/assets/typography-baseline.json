@@ -1,0 +1,24 @@
+{
+  "reviewed": "2026-08-24",
+  "reference_only": true,
+  "scope": "Material Design 3 baseline type scale as documented in Android Compose guidance",
+  "unit": "sp",
+  "source": "https://developer.android.com/develop/ui/compose/designsystems/material3",
+  "roles": {
+    "displayLarge": {"fontSize": 57, "lineHeight": 64, "referenceTypefaceStyle": "Roboto"},
+    "displayMedium": {"fontSize": 45, "lineHeight": 52, "referenceTypefaceStyle": "Roboto"},
+    "displaySmall": {"fontSize": 36, "lineHeight": 44, "referenceTypefaceStyle": "Roboto"},
+    "headlineLarge": {"fontSize": 32, "lineHeight": 40, "referenceTypefaceStyle": "Roboto"},
+    "headlineMedium": {"fontSize": 28, "lineHeight": 36, "referenceTypefaceStyle": "Roboto"},
+    "headlineSmall": {"fontSize": 24, "lineHeight": 32, "referenceTypefaceStyle": "Roboto"},
+    "titleLarge": {"fontSize": 22, "lineHeight": 28, "referenceTypefaceStyle": "Roboto Medium"},
+    "titleMedium": {"fontSize": 16, "lineHeight": 24, "referenceTypefaceStyle": "Roboto Medium"},
+    "titleSmall": {"fontSize": 14, "lineHeight": 20, "referenceTypefaceStyle": "Roboto Medium"},
+    "bodyLarge": {"fontSize": 16, "lineHeight": 24, "referenceTypefaceStyle": "Roboto"},
+    "bodyMedium": {"fontSize": 14, "lineHeight": 20, "referenceTypefaceStyle": "Roboto"},
+    "bodySmall": {"fontSize": 12, "lineHeight": 16, "referenceTypefaceStyle": "Roboto"},
+    "labelLarge": {"fontSize": 14, "lineHeight": 20, "referenceTypefaceStyle": "Roboto Medium"},
+    "labelMedium": {"fontSize": 12, "lineHeight": 16, "referenceTypefaceStyle": "Roboto Medium"},
+    "labelSmall": {"fontSize": 11, "lineHeight": 16, "referenceTypefaceStyle": "Roboto Medium"}
+  }
+}

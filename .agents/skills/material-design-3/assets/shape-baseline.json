@@ -1,0 +1,61 @@
+{
+  "reviewed": "2026-08-24",
+  "reference_only": true,
+  "scope": "Compose Material 3 baseline shape example plus current 1.5 alpha Expressive additions",
+  "sources": [
+    "https://developer.android.com/develop/ui/compose/designsystems/material3",
+    "https://developer.android.com/reference/kotlin/androidx/compose/material3/Shapes",
+    "https://developer.android.com/reference/kotlin/androidx/compose/material3/ShapeDefaults",
+    "https://developer.android.com/reference/kotlin/androidx/compose/material3/MaterialShapes"
+  ],
+  "composeBaselineExampleDp": {
+    "extraSmall": 4,
+    "small": 8,
+    "medium": 12,
+    "large": 16,
+    "extraLarge": 24
+  },
+  "endpoints": ["RectangleShape", "CircleShape"],
+  "compose15AlphaAdditionalSlots": [
+    "largeIncreased",
+    "extraLargeIncreased",
+    "extraExtraLarge"
+  ],
+  "materialShapesExperimental": [
+    "Arch",
+    "Arrow",
+    "Boom",
+    "Bun",
+    "Burst",
+    "Circle",
+    "ClamShell",
+    "Clover4Leaf",
+    "Clover8Leaf",
+    "Cookie12Sided",
+    "Cookie4Sided",
+    "Cookie6Sided",
+    "Cookie7Sided",
+    "Cookie9Sided",
+    "Diamond",
+    "Fan",
+    "Flower",
+    "Gem",
+    "Ghostish",
+    "Heart",
+    "Oval",
+    "Pentagon",
+    "Pill",
+    "PixelCircle",
+    "PixelTriangle",
+    "Puffy",
+    "PuffyDiamond",
+    "SemiCircle",
+    "Slanted",
+    "SoftBoom",
+    "SoftBurst",
+    "Square",
+    "Sunny",
+    "Triangle",
+    "VerySunny"
+  ]
+}

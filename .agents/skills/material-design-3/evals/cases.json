@@ -2,99 +2,304 @@
   {
     "id": "new-web-ui",
     "prompt": "Build a new account settings page in React using Material Design 3.",
-    "required": ["inspect the project stack before choosing implementation primitives", "use semantic theme roles and reusable components", "verify the rendered UI when browser tooling is available"],
-    "forbidden": ["scatter reference-theme hex colors through components", "treat rounded cards as the definition of Material 3"],
-    "references": ["foundations", "components", "platform-web"]
+    "required": [
+      "inspect the project stack before choosing implementation primitives",
+      "use semantic theme roles and reusable components",
+      "verify the rendered UI when browser tooling is available"
+    ],
+    "forbidden": [
+      "scatter reference-theme hex colors through components",
+      "treat rounded cards as the definition of Material 3"
+    ],
+    "references": [
+      "foundations",
+      "components",
+      "platform-web"
+    ]
   },
   {
     "id": "existing-non-material-system",
     "prompt": "Add a compact profile action to an existing app that already uses shadcn and custom design tokens. Material 3 is not requested.",
-    "required": ["preserve the established design system", "avoid activating Material-specific migration behavior without user intent"],
-    "forbidden": ["replace shadcn components with Material components", "introduce Material tokens just because the skill exists"],
-    "references": ["platform-web"]
+    "required": [
+      "preserve the established design system",
+      "avoid activating Material-specific migration behavior without user intent"
+    ],
+    "forbidden": [
+      "replace shadcn components with Material components",
+      "introduce Material tokens just because the skill exists"
+    ],
+    "references": [
+      "platform-web"
+    ]
   },
   {
     "id": "explicit-migration",
     "prompt": "Migrate this legacy Material 2 settings screen to Material Design 3.",
-    "required": ["inspect current components and theme", "map semantics rather than only changing color and corner radius", "identify component-model changes that need explicit migration"],
-    "forbidden": ["perform a cosmetic-only reskin", "assume every Material 2 component maps one-to-one"],
-    "references": ["foundations", "components"]
+    "required": [
+      "inspect current components and theme",
+      "map semantics rather than only changing color and corner radius",
+      "identify component-model changes that need explicit migration"
+    ],
+    "forbidden": [
+      "perform a cosmetic-only reskin",
+      "assume every Material 2 component maps one-to-one"
+    ],
+    "references": [
+      "foundations",
+      "components"
+    ]
   },
   {
     "id": "semantic-color",
     "prompt": "Use #6750A4 as the main brand color for this Material 3 web app.",
-    "required": ["treat the supplied color as theme input or a semantic role source", "centralize resulting roles in theme tokens"],
-    "forbidden": ["hardcode #6750A4 into every primary component", "pair on-colors with unrelated containers"],
-    "references": ["foundations", "platform-web"]
+    "required": [
+      "treat the supplied color as theme input or a semantic role source",
+      "centralize resulting roles in theme tokens"
+    ],
+    "forbidden": [
+      "hardcode #6750A4 into every primary component",
+      "pair on-colors with unrelated containers"
+    ],
+    "references": [
+      "foundations",
+      "platform-web"
+    ]
   },
   {
     "id": "adaptive-list-detail",
     "prompt": "Build a Material 3 mail interface that works on narrow phones and wide desktop windows.",
-    "required": ["use available window width rather than device labels", "consider a list-detail pattern on wider windows", "keep compact navigation appropriate to compact layouts"],
-    "forbidden": ["stretch a phone layout across desktop", "use isTablet-style device branching as the primary adaptive model"],
-    "references": ["adaptive-accessibility", "components"]
+    "required": [
+      "use available window width rather than device labels",
+      "consider a list-detail pattern on wider windows",
+      "keep compact navigation appropriate to compact layouts"
+    ],
+    "forbidden": [
+      "stretch a phone layout across desktop",
+      "use isTablet-style device branching as the primary adaptive model"
+    ],
+    "references": [
+      "adaptive-accessibility",
+      "components"
+    ]
   },
   {
     "id": "touch-target",
     "prompt": "Create a dense toolbar with 24px Material Symbols icon buttons.",
-    "required": ["separate visual icon size from interactive target size", "provide accessible names and keyboard focus"],
-    "forbidden": ["make the clickable target only 24 by 24", "rely on color alone for selected state"],
-    "references": ["adaptive-accessibility", "foundations"]
+    "required": [
+      "separate visual icon size from interactive target size",
+      "provide accessible names and keyboard focus"
+    ],
+    "forbidden": [
+      "make the clickable target only 24 by 24",
+      "rely on color alone for selected state"
+    ],
+    "references": [
+      "adaptive-accessibility",
+      "foundations"
+    ]
   },
   {
     "id": "expressive-restraint",
     "prompt": "Make this productivity dashboard feel Material 3 Expressive.",
-    "required": ["apply expressive techniques selectively to hierarchy and key interactions", "preserve familiar information architecture", "respect reduced-motion and accessibility needs"],
-    "forbidden": ["use decorative expressive shapes on every control", "animate every interaction dramatically", "sacrifice task efficiency for novelty"],
-    "references": ["expressive", "adaptive-accessibility"]
+    "required": [
+      "apply expressive techniques selectively to hierarchy and key interactions",
+      "preserve familiar information architecture",
+      "respect reduced-motion and accessibility needs"
+    ],
+    "forbidden": [
+      "use decorative expressive shapes on every control",
+      "animate every interaction dramatically",
+      "sacrifice task efficiency for novelty"
+    ],
+    "references": [
+      "expressive",
+      "adaptive-accessibility"
+    ]
   },
   {
     "id": "compose-stability",
     "prompt": "Use MaterialShapes and MotionScheme in our production Compose app that currently pins stable Material3 dependencies.",
-    "required": ["inspect the pinned Compose Material3 version", "distinguish official Material concepts from alpha or experimental APIs", "prefer stable primitives unless experimental adoption is explicitly accepted"],
-    "forbidden": ["assume the latest Expressive API is stable because it is official Material guidance", "silently bump dependencies to alpha"],
-    "references": ["platform-compose", "expressive"]
+    "required": [
+      "inspect the pinned Compose Material3 version",
+      "distinguish official Material concepts from alpha or experimental APIs",
+      "prefer stable primitives unless experimental adoption is explicitly accepted"
+    ],
+    "forbidden": [
+      "assume the latest Expressive API is stable because it is official Material guidance",
+      "silently bump dependencies to alpha"
+    ],
+    "references": [
+      "platform-compose",
+      "expressive"
+    ]
   },
   {
     "id": "flutter-migration",
     "prompt": "Update an older Flutter Material app to Material 3 without breaking its navigation.",
-    "required": ["inspect Flutter version and existing ThemeData", "use ColorScheme and current Material widgets", "identify components that require explicit replacement such as legacy navigation patterns"],
-    "forbidden": ["assume useMaterial3 alone completes migration", "rewrite the whole app when targeted migration is sufficient"],
-    "references": ["platform-flutter", "components"]
+    "required": [
+      "inspect Flutter version and existing ThemeData",
+      "use ColorScheme and current Material widgets",
+      "identify components that require explicit replacement such as legacy navigation patterns"
+    ],
+    "forbidden": [
+      "assume useMaterial3 alone completes migration",
+      "rewrite the whole app when targeted migration is sufficient"
+    ],
+    "references": [
+      "platform-flutter",
+      "components"
+    ]
   },
   {
     "id": "visual-verification",
     "prompt": "Implement this Material 3 landing screen and finish the task.",
-    "required": ["run project tests or build checks", "render and inspect the UI when browser or screenshot tooling is available", "check at least compact and expanded widths for adaptive work"],
-    "forbidden": ["declare visual correctness from source inspection alone when rendering tools are available", "ignore runtime console or layout errors"],
-    "references": ["platform-web", "adaptive-accessibility"]
+    "required": [
+      "run project tests or build checks",
+      "render and inspect the UI when browser or screenshot tooling is available",
+      "check at least compact and expanded widths for adaptive work"
+    ],
+    "forbidden": [
+      "declare visual correctness from source inspection alone when rendering tools are available",
+      "ignore runtime console or layout errors"
+    ],
+    "references": [
+      "platform-web",
+      "adaptive-accessibility"
+    ]
   },
   {
     "id": "component-hierarchy",
     "prompt": "This form has Save, Delete, Cancel, and Preview actions. Make the action area Material 3.",
-    "required": ["assign prominence from task hierarchy and risk", "keep destructive action semantics clear", "choose button variants by role rather than aesthetics"],
-    "forbidden": ["make every action a filled primary button", "choose variants only because they look balanced"],
-    "references": ["components"]
+    "required": [
+      "assign prominence from task hierarchy and risk",
+      "keep destructive action semantics clear",
+      "choose button variants by role rather than aesthetics"
+    ],
+    "forbidden": [
+      "make every action a filled primary button",
+      "choose variants only because they look balanced"
+    ],
+    "references": [
+      "components"
+    ]
   },
   {
     "id": "dynamic-color-brand",
     "prompt": "Our Android app has a strict brand palette but also wants Material You dynamic color where appropriate.",
-    "required": ["treat dynamic color as a supported theme mode rather than a universal brand replacement", "provide appropriate fallback brand schemes", "preserve semantic color roles"],
-    "forbidden": ["force wallpaper-derived colors in all circumstances", "discard brand constraints without product direction"],
-    "references": ["foundations", "platform-compose"]
+    "required": [
+      "treat dynamic color as a supported theme mode rather than a universal brand replacement",
+      "provide appropriate fallback brand schemes",
+      "preserve semantic color roles"
+    ],
+    "forbidden": [
+      "force wallpaper-derived colors in all circumstances",
+      "discard brand constraints without product direction"
+    ],
+    "references": [
+      "foundations",
+      "platform-compose"
+    ]
   },
   {
     "id": "icon-state",
     "prompt": "Implement a favorite toggle using Material Symbols.",
-    "required": ["use an accessible toggle semantic", "consider the FILL axis to communicate state", "preserve an accessible name and non-color state cue"],
-    "forbidden": ["make state understandable only from color", "load the entire variable-font axis space when only a small subset is needed"],
-    "references": ["foundations", "adaptive-accessibility"]
+    "required": [
+      "use an accessible toggle semantic",
+      "consider the FILL axis to communicate state",
+      "preserve an accessible name and non-color state cue"
+    ],
+    "forbidden": [
+      "make state understandable only from color",
+      "load the entire variable-font axis space when only a small subset is needed"
+    ],
+    "references": [
+      "foundations",
+      "adaptive-accessibility"
+    ]
   },
   {
     "id": "existing-material-theme",
     "prompt": "Add a new card to an existing Material 3 app with centralized tokens and shared Card components.",
-    "required": ["reuse existing tokens and component abstractions", "inspect existing variants before adding a new one"],
-    "forbidden": ["recreate a second Material theme locally", "hardcode duplicate token values inside the new card"],
-    "references": ["foundations", "components"]
+    "required": [
+      "reuse existing tokens and component abstractions",
+      "inspect existing variants before adding a new one"
+    ],
+    "forbidden": [
+      "recreate a second Material theme locally",
+      "hardcode duplicate token values inside the new card"
+    ],
+    "references": [
+      "foundations",
+      "components"
+    ]
+  },
+  {
+    "id": "typography-hierarchy",
+    "prompt": "Create Material 3 typography for a page with a hero statement, section heading, descriptive paragraph, and Save button label.",
+    "required": [
+      "choose display/headline/title/body/label roles from semantic hierarchy before choosing raw sizes",
+      "use the baseline scale as reference rather than mandatory branding",
+      "preserve a coherent type system when mapping a custom font"
+    ],
+    "forbidden": [
+      "pick arbitrary font sizes only because they visually fit",
+      "use display typography for routine dense UI just to make it dramatic"
+    ],
+    "references": [
+      "typography"
+    ]
+  },
+  {
+    "id": "web-type-scale",
+    "prompt": "Implement the Material 3 baseline type scale in a responsive React application.",
+    "required": [
+      "translate semantic roles into centralized web tokens",
+      "use scalable web units and preserve browser/user text scaling",
+      "treat the Android sp baseline as reference rather than copying sp syntax or fixed CSS pixels"
+    ],
+    "forbidden": [
+      "write Android sp units into CSS",
+      "disable browser zoom or text scaling to preserve the baseline measurements"
+    ],
+    "references": [
+      "typography",
+      "platform-web"
+    ]
+  },
+  {
+    "id": "shape-system",
+    "prompt": "Create a Material 3 shape system for cards, chips, text fields, dialogs, and buttons in a new web app.",
+    "required": [
+      "start from semantic component shapes and a centralized shape scale",
+      "treat Compose dp values as reference rather than mandatory CSS pixels",
+      "reuse consistent tokens instead of component-specific arbitrary radii"
+    ],
+    "forbidden": [
+      "invent a different radius for every component",
+      "turn every component into a fully rounded pill regardless of semantics"
+    ],
+    "references": [
+      "shape",
+      "components",
+      "platform-web"
+    ]
+  },
+  {
+    "id": "expressive-shape-stability",
+    "prompt": "Use PuffyDiamond and Heart MaterialShapes with morphing in our production Compose app that pins Material3 1.4.x stable.",
+    "required": [
+      "recognize MaterialShapes as a newer experimental Expressive API",
+      "inspect the pinned dependency before coding",
+      "avoid an alpha upgrade unless the user explicitly accepts the dependency and experimental opt-in"
+    ],
+    "forbidden": [
+      "pretend MaterialShapes exists in stable 1.4.x",
+      "silently upgrade Compose Material3 to alpha because the shapes are official Material guidance"
+    ],
+    "references": [
+      "shape",
+      "platform-compose",
+      "expressive"
+    ]
   }
 ]

@@ -12,7 +12,7 @@
 
 <p align="center">
   <a href="https://github.com/deserveto/Material-Design-Kit-3-Skills"><img alt="repo" src="https://img.shields.io/badge/repo-Material--Design--Kit--3--Skills-1f6feb?style=for-the-badge" /></a>
-  <img alt="version" src="https://img.shields.io/badge/version-v0.1.0-7c3aed?style=for-the-badge" />
+  <img alt="version" src="https://img.shields.io/badge/version-v0.2.0-7c3aed?style=for-the-badge" />
   <img alt="skill" src="https://img.shields.io/badge/skill-material--design--3-0f766e?style=for-the-badge" />
   <img alt="license" src="https://img.shields.io/badge/license-MIT-111827?style=for-the-badge" />
 </p>
@@ -129,7 +129,9 @@ npx skills add deserveto/Material-Design-Kit-3-Skills@material-design-3 \
 | Area | What it gives the agent |
 |---|---|
 | **Core skill** | Lean `SKILL.md` with progressive-disclosure routing |
-| **Foundations** | Semantic tokens, color, typography, shape, motion, elevation, icons |
+| **Foundations** | Semantic tokens, color, motion, elevation, and icons |
+| **Typography guide** | Full 15-role baseline scale, custom-font mapping, scaling, and platform translation |
+| **Shape guide** | Corner scale, Compose baseline values, newer alpha slots, and all 35 experimental MaterialShapes |
 | **Components** | Prominence, semantics, and common M3 anti-pattern avoidance |
 | **Adaptive + accessibility** | Window-size thinking, navigation adaptation, keyboard/focus, touch targets, contrast, scaling |
 | **Expressive** | Material 3 Expressive guidance with clear restraint rules |
@@ -262,10 +264,15 @@ Primary sources and review dates are pinned in:
 │   ├── components.md
 │   ├── expressive.md
 │   ├── foundations.md
+│   ├── typography.md
+│   ├── shape.md
 │   ├── platform-compose.md
 │   ├── platform-flutter.md
 │   ├── platform-web.md
 │   └── sources.md
+├── assets/
+│   ├── typography-baseline.json
+│   └── shape-baseline.json
 └── scripts/
     ├── audit_m3.py
     └── validate_skill.py

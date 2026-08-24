@@ -22,6 +22,15 @@
 - Material 3 in Compose: https://developer.android.com/develop/ui/compose/designsystems/material3
   - Reviewed 2026-08-24.
   - Covers Material 3 / M3 Expressive implementation concepts, theming, dynamic color, typography, and shapes.
+- Compose `Typography`: https://developer.android.com/reference/kotlin/androidx/compose/material3/Typography
+  - Reviewed 2026-08-24.
+  - Current 1.5 alpha API exposes emphasized counterparts for the baseline roles; treat version-specific additions separately from the baseline type scale.
+- Compose `Shapes`: https://developer.android.com/reference/kotlin/androidx/compose/material3/Shapes
+  - Reviewed 2026-08-24.
+  - Current 1.5.0-alpha26 constructor adds `largeIncreased`, `extraLargeIncreased`, and `extraExtraLarge`.
+- Compose `ShapeDefaults`: https://developer.android.com/reference/kotlin/androidx/compose/material3/ShapeDefaults
+  - Reviewed 2026-08-24.
+  - Tracks default semantic shape slots and the newer 1.5 alpha additions.
 - Compose Material3 releases: https://developer.android.com/jetpack/androidx/releases/compose-material3
   - Reviewed 2026-08-24.
   - Snapshot at review: stable 1.4.0, alpha 1.5.0-alpha26.
