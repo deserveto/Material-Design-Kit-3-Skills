@@ -1,0 +1,14 @@
+{
+  "reviewed": "2026-08-24",
+  "reference_only": true,
+  "purpose": "Machine-readable semantic action prominence hints. Platform/project component availability still wins.",
+  "actions": {
+    "filled": {"relativeProminence": "highest-local", "typicalIntent": "primary local action"},
+    "filledTonal": {"relativeProminence": "strong-secondary", "typicalIntent": "important secondary action"},
+    "elevated": {"relativeProminence": "strong-secondary", "typicalIntent": "important action needing separation from surface"},
+    "outlined": {"relativeProminence": "medium", "typicalIntent": "secondary action needing a boundary"},
+    "text": {"relativeProminence": "low", "typicalIntent": "low-emphasis action"},
+    "icon": {"relativeProminence": "contextual", "typicalIntent": "compact glyph action with accessible name"},
+    "fab": {"relativeProminence": "screen-primary-floating", "typicalIntent": "single persistent floating screen action"}
+  }
+}

@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Conservative heuristic review for common Material 3 web UI mistakes.
 
-This scanner is intentionally small and dependency-free. It identifies review
-candidates; it does not certify Material Design or accessibility conformance.
+This scanner is intentionally dependency-free. It identifies review candidates;
+it does not certify Material Design or accessibility conformance.
 """
 
 from __future__ import annotations
@@ -48,6 +48,16 @@ RAW_COLOR_RE = re.compile(
 TOKEN_DECLARATION_RE = re.compile(r"--[A-Za-z0-9_-]+\s*:")
 TRANSITION_ALL_RE = re.compile(r"\btransition\s*:\s*all\b", re.IGNORECASE)
 GENERIC_CLICK_RE = re.compile(r"<(?:div|span)\b[^>]*\bonClick\s*=", re.IGNORECASE)
+FOCUS_OUTLINE_REMOVAL_RE = re.compile(
+    r"\boutline\s*:\s*(?:none|0)(?:\s*!important)?\s*;?", re.IGNORECASE
+)
+HARDCODED_RADIUS_RE = re.compile(
+    r"\bborder(?:-(?:top|bottom)-(?:left|right))?-radius\s*:\s*\d+(?:\.\d+)?px\b",
+    re.IGNORECASE,
+)
+FIXED_PX_FONT_SIZE_RE = re.compile(
+    r"\bfont-size\s*:\s*\d+(?:\.\d+)?px\b", re.IGNORECASE
+)
 
 
 def iter_source_files(paths: Iterable[Path]) -> Iterable[Path]:
@@ -119,6 +129,39 @@ def audit_file(path: Path) -> list[dict[str, object]]:
                 )
             )
 
+        if FOCUS_OUTLINE_REMOVAL_RE.search(line):
+            findings.append(
+                finding(
+                    "m3.a11y.focus-outline-removal",
+                    "warning",
+                    path,
+                    number,
+                    "Focus outline removal detected. Only remove a platform/browser focus indicator when an equal or better visible focus treatment is implemented and verified.",
+                )
+            )
+
+        if HARDCODED_RADIUS_RE.search(line):
+            findings.append(
+                finding(
+                    "m3.shape.hardcoded-radius",
+                    "review",
+                    path,
+                    number,
+                    "Hard-coded pixel radius detected. Prefer an existing semantic shape token or component default unless this is an intentional local exception.",
+                )
+            )
+
+        if FIXED_PX_FONT_SIZE_RE.search(line):
+            findings.append(
+                finding(
+                    "m3.typography.fixed-px-font-size",
+                    "review",
+                    path,
+                    number,
+                    "Fixed pixel font size detected. Prefer the project's semantic typography tokens and scalable web units where applicable.",
+                )
+            )
+
     return findings
 
 
@@ -136,9 +179,14 @@ def audit(paths: Iterable[Path]) -> list[dict[str, object]]:
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        description="Heuristically review web UI source for a few common Material 3 implementation mistakes."
+        description="Heuristically review web UI source for common Material 3 implementation mistakes."
     )
     parser.add_argument("--json", action="store_true", help="Emit machine-readable JSON.")
+    parser.add_argument(
+        "--strict",
+        action="store_true",
+        help="Return exit code 1 when any heuristic finding is detected. Off by default to avoid treating heuristics as certification.",
+    )
     parser.add_argument("paths", nargs="*", default=["."], help="Files or directories to scan.")
     return parser
 
@@ -160,6 +208,7 @@ def main(argv: list[str]) -> int:
                 {
                     "tool": "audit_m3",
                     "heuristic": True,
+                    "strict": args.strict,
                     "disclaimer": disclaimer,
                     "findings": findings,
                 },
@@ -178,7 +227,8 @@ def main(argv: list[str]) -> int:
                 )
             print(f"{len(findings)} finding(s).")
 
-    # Findings do not fail the build by default. The tool is a review aid.
+    if args.strict and findings:
+        return 1
     return 0
 
 

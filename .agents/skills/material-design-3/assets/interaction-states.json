@@ -1,0 +1,16 @@
+{
+  "reviewed": "2026-08-24",
+  "reference_only": true,
+  "purpose": "Machine-readable interaction-state review vocabulary, not universal visual token values.",
+  "states": {
+    "enabled": {"semanticStateRequired": false},
+    "hover": {"pointerOnly": true, "mustNotCarryEssentialMeaningAlone": true},
+    "focus": {"visibleIndicatorRequired": true},
+    "pressed": {"feedbackRequired": true},
+    "selected": {"semanticStateRequired": true, "nonColorCueRequired": true},
+    "disabled": {"activationBlockedWhenApplicable": true},
+    "loading": {"recoveryConsidered": true},
+    "error": {"semanticOrTextCueRequired": true, "nonColorCueRequired": true},
+    "dragged": {"spatialRelationshipMustRemainUnderstandable": true}
+  }
+}

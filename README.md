@@ -12,7 +12,7 @@
 
 <p align="center">
   <a href="https://github.com/deserveto/Material-Design-Kit-3-Skills"><img alt="repo" src="https://img.shields.io/badge/repo-Material--Design--Kit--3--Skills-1f6feb?style=for-the-badge" /></a>
-  <img alt="version" src="https://img.shields.io/badge/version-v0.2.0-7c3aed?style=for-the-badge" />
+  <img alt="version" src="https://img.shields.io/badge/version-v0.3.0-7c3aed?style=for-the-badge" />
   <img alt="skill" src="https://img.shields.io/badge/skill-material--design--3-0f766e?style=for-the-badge" />
   <img alt="license" src="https://img.shields.io/badge/license-MIT-111827?style=for-the-badge" />
 </p>
@@ -43,14 +43,17 @@ Most "Material Design" prompts teach a **look**:
 This repository teaches an agent a **system** instead:
 
 - semantic design tokens and color roles;
-- typography, shape, motion, elevation, and Material Symbols;
+- typography, shape, layout/spacing, motion, elevation, and Material Symbols;
 - component choice by interaction semantics and hierarchy;
+- complete focus/pressed/selected/loading/error state contracts;
 - adaptive layouts rather than stretched phone screens;
-- accessibility and complete interaction states;
+- accessibility and rendered verification;
 - Material 3 Expressive with restraint;
-- platform-specific implementation differences;
+- Web, mobile Compose, Wear Compose, and Flutter platform boundaries;
+- phased Material 2/legacy migration;
+- evidence-based review severity;
 - stable versus alpha/experimental API boundaries;
-- deterministic and rendered verification.
+- deterministic behavioral eval contracts and maintenance checks.
 
 It is an **unofficial community project** and is **not affiliated with or endorsed by Google**.
 
@@ -112,15 +115,18 @@ npx skills add deserveto/Material-Design-Kit-3-Skills@material-design-3 \
 ### Typical flow
 
 1. Install the skill with `npx skills add ...`
-2. Ask your coding agent to build or review an interface using Material 3
-3. Let the skill route the agent to the right references:
-   - foundations,
-   - components,
-   - accessibility/adaptive layout,
+2. Ask your coding agent to build, migrate, or review an interface using Material 3
+3. Let the skill route the agent to only the references it needs:
+   - foundations / typography / shape,
+   - layout and spacing,
+   - specific component families,
+   - interaction states,
+   - adaptive/accessibility,
+   - migration or review rubric,
    - Expressive,
-   - Web / Compose / Flutter
+   - Web / Compose / Wear / Flutter
 4. Run project verification plus the included Material audit helper when useful
-5. Review the rendered result, not just the source code
+5. Review the rendered result and relevant states, not just the source code
 
 ---
 
@@ -132,13 +138,19 @@ npx skills add deserveto/Material-Design-Kit-3-Skills@material-design-3 \
 | **Foundations** | Semantic tokens, color, motion, elevation, and icons |
 | **Typography guide** | Full 15-role baseline scale, custom-font mapping, scaling, and platform translation |
 | **Shape guide** | Corner scale, Compose baseline values, newer alpha slots, and all 35 experimental MaterialShapes |
-| **Components** | Prominence, semantics, and common M3 anti-pattern avoidance |
+| **Layout + spacing** | Structural regions, spacing systems, insets, readable width, and adaptive composition |
+| **Component decision guides** | Separate action, navigation, input/selection, and feedback/containment rules |
+| **Interaction states** | Focus, pressed, selected, disabled, loading, error, async recovery, and reduced-motion contracts |
 | **Adaptive + accessibility** | Window-size thinking, navigation adaptation, keyboard/focus, touch targets, contrast, scaling |
+| **Migration guide** | Phased Material 2/legacy → M3 migration instead of cosmetic reskinning |
+| **Review rubric** | BLOCKER/HIGH/MEDIUM/LOW findings with evidence, impact, recommendation, verification |
 | **Expressive** | Material 3 Expressive guidance with clear restraint rules |
-| **Platform profiles** | Web, Jetpack Compose, and Flutter implementation guidance |
+| **Platform profiles** | Web, Android Compose, Wear Compose Material 3, and Flutter implementation guidance |
+| **Machine-readable assets** | Typography, shape, action-prominence, and interaction-state data for deterministic tooling |
 | **Validator** | Checks the skill package contract and reference integrity |
-| **Audit helper** | Conservative static review for common web-side M3 issues |
-| **Behavioral evals** | Test cases for control-vs-skill evaluation across real agent runs |
+| **Audit helper** | Conservative static review for common web-side M3 issues with optional strict mode |
+| **Behavioral evals** | Cases, fixture contracts, and a stable result schema for control-vs-skill runs |
+| **Freshness guard** | Monthly CI check that flags Material source research when its review date becomes stale |
 
 ---
 
@@ -148,12 +160,12 @@ npx skills add deserveto/Material-Design-Kit-3-Skills@material-design-3 \
 
 Use it when a task is explicitly about:
 
-- creating a new Material 3 UI,
+- creating a new Material 3 / M3 UI,
 - extending an existing Material 3 application,
 - migrating from Material 2 / legacy patterns,
 - reviewing a UI for Material 3 alignment,
 - applying Material 3 Expressive carefully,
-- implementing M3 on Web, Compose, or Flutter.
+- implementing M3 on Web, Android Compose, Wear OS Compose, or Flutter.
 
 ### What the skill will deliberately avoid
 
@@ -161,10 +173,14 @@ This skill tries to stop agents from doing things like:
 
 - forcing Material into a repo that uses another design system,
 - translating Compose APIs literally into web code,
+- using mobile Compose Material3 as the primary Wear OS component library,
 - hard-coding reference purple everywhere,
+- inventing random radii and spacing per component,
 - wrapping every section in cards,
-- overusing FABs, chips, and shadows,
+- overusing FABs, chips, shadows, or Expressive shapes,
+- removing keyboard focus outlines without a replacement,
 - stretching phone navigation patterns onto wide layouts,
+- calling a color/radius reskin a complete M2→M3 migration,
 - silently using experimental APIs as if they were stable.
 
 ---
@@ -175,6 +191,12 @@ This skill tries to stop agents from doing things like:
 
 ```bash
 python .agents/skills/material-design-3/scripts/validate_skill.py
+```
+
+CI also runs the official Agent Skills reference validator:
+
+```bash
+skills-ref validate .agents/skills/material-design-3
 ```
 
 ### Run the repository test suite
@@ -195,26 +217,44 @@ python .agents/skills/material-design-3/scripts/audit_m3.py src
 python .agents/skills/material-design-3/scripts/audit_m3.py --json src
 ```
 
+### Strict CI/review mode
+
+```bash
+python .agents/skills/material-design-3/scripts/audit_m3.py --strict src
+```
+
+`--strict` returns exit code `1` when any heuristic finding exists. It is opt-in because findings are review candidates, not automatic proof of a defect.
+
+### Check source-review freshness
+
+```bash
+python .agents/skills/material-design-3/scripts/check_source_freshness.py --max-age-days 45
+```
+
 > A clean audit is **not** Material compliance or accessibility certification. It is a conservative reviewer/agent aid.
 
 ---
 
 ## Behavioral evals
 
-The repository includes a small eval corpus for fresh-session testing with and without the skill.
+The repository includes a harness-neutral eval corpus for fresh-session testing with and without the skill.
 
 Covered scenarios include:
 
 - new M3 UI generation,
 - preserving non-Material existing systems,
-- M2/legacy migration,
+- M2/legacy phased migration,
 - semantic color role usage,
-- adaptive list-detail behavior,
-- touch target and icon semantics,
+- adaptive list-detail and layout/spacing behavior,
+- touch target, focus, loading/error, and icon semantics,
 - Material 3 Expressive restraint,
 - Compose stable vs experimental API boundaries,
+- Wear Compose vs mobile Compose platform boundaries,
 - Flutter migration,
+- evidence-based review severity,
 - visual verification behavior.
+
+`fixtures.json` defines repeatable environment contracts and `results.schema.json` defines how to record harness/model/commit/control-vs-skill results.
 
 See:
 
@@ -229,9 +269,10 @@ See:
 At the current research snapshot (**reviewed 2026-08-24**):
 
 - Google's Material site presents **M3 Expressive** as the current evolution of Material 3.
-- The Figma M3 Design Kit is positioned as updated for Expressive.
-- AndroidX Compose Material3 has a split between **stable** and **alpha/experimental** Expressive-related APIs.
+- AndroidX Compose Material3 is **1.4.0 stable** with a separate **1.5.0-alpha26** line containing newer Expressive APIs.
+- Wear Compose is **1.6.2 stable** and its Wear-specific Material3 library already supports Material 3 Expressive; Wear must not be treated as mobile Compose Material3.
 - Flutter has used Material 3 by default since Flutter 3.16, but migration can still require real component changes.
+- Agent Skills defines progressive disclosure and recommends `skills-ref validate` for format validation.
 
 Version-sensitive facts are recorded separately from stable concepts so the agent does not confuse:
 
@@ -239,6 +280,8 @@ Version-sensitive facts are recorded separately from stable concepts so the agen
 official Material guidance
 !=
 stable API everywhere
+!=
+the same API on every platform
 ```
 
 Primary sources and review dates are pinned in:
@@ -258,23 +301,37 @@ Primary sources and review dates are pinned in:
 │   └── openai.yaml
 ├── evals/
 │   ├── README.md
-│   └── cases.json
+│   ├── cases.json
+│   ├── fixtures.json
+│   └── results.schema.json
 ├── references/
 │   ├── adaptive-accessibility.md
 │   ├── components.md
+│   ├── components-actions.md
+│   ├── components-navigation.md
+│   ├── components-input-selection.md
+│   ├── components-feedback-containment.md
 │   ├── expressive.md
 │   ├── foundations.md
+│   ├── interaction-states.md
+│   ├── layout-spacing.md
+│   ├── migration.md
+│   ├── review-rubric.md
 │   ├── typography.md
 │   ├── shape.md
 │   ├── platform-compose.md
+│   ├── platform-wear.md
 │   ├── platform-flutter.md
 │   ├── platform-web.md
 │   └── sources.md
 ├── assets/
 │   ├── typography-baseline.json
-│   └── shape-baseline.json
+│   ├── shape-baseline.json
+│   ├── component-prominence.json
+│   └── interaction-states.json
 └── scripts/
     ├── audit_m3.py
+    ├── check_source_freshness.py
     └── validate_skill.py
 
 adapters/
@@ -313,12 +370,12 @@ For user-global installation, place it in:
 
 Possible later work:
 
-- broader static audit rules with tighter false-positive controls;
-- fixture repositories and automated agent behavior matrices;
-- richer rendered demo examples;
+- SARIF output and additional audit rules with tighter false-positive controls;
+- real fixture repositories plus published multi-model behavior matrices;
+- richer rendered demo examples and golden comparisons;
 - Figma-assisted workflows;
 - plugin packaging for wider distribution;
-- more platform profiles where Material implementations are maintained.
+- additional platform profiles where Material implementations are maintained.
 
 The canonical Material knowledge should remain in the **Agent Skill**, even if plugins are added later.
 
