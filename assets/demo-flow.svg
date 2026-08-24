@@ -1,0 +1,75 @@
+<svg width="1400" height="760" viewBox="0 0 1400 760" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Material Design 3 Skill workflow</title>
+  <desc id="desc">A three-step demo flow showing install, use, and verify for the Material Design 3 Skill.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1400" y2="760" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F8FAFC"/>
+      <stop offset="1" stop-color="#EEF2FF"/>
+    </linearGradient>
+    <linearGradient id="card1" x1="0" y1="0" x2="360" y2="280" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#4F46E5"/>
+      <stop offset="1" stop-color="#7C3AED"/>
+    </linearGradient>
+    <linearGradient id="card2" x1="0" y1="0" x2="360" y2="280" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0F766E"/>
+      <stop offset="1" stop-color="#14B8A6"/>
+    </linearGradient>
+    <linearGradient id="card3" x1="0" y1="0" x2="360" y2="280" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0F172A"/>
+      <stop offset="1" stop-color="#334155"/>
+    </linearGradient>
+    <filter id="shadow" x="40" y="70" width="1320" height="500" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feOffset dy="18"/>
+      <feGaussianBlur stdDeviation="18"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.0588 0 0 0 0 0.0902 0 0 0 0 0.1647 0 0 0 0.10 0"/>
+      <feBlend in2="SourceGraphic" result="shape"/>
+    </filter>
+  </defs>
+  <rect width="1400" height="760" rx="28" fill="url(#bg)"/>
+  <text x="80" y="104" fill="#0F172A" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="42" font-weight="800">From installation to verified UI decisions</text>
+  <text x="80" y="144" fill="#475569" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="22" font-weight="500">The repository is designed to be easy to install, practical to use, and explicit about verification.</text>
+  <g filter="url(#shadow)">
+    <rect x="80" y="220" width="360" height="290" rx="28" fill="url(#card1)"/>
+    <rect x="520" y="220" width="360" height="290" rx="28" fill="url(#card2)"/>
+    <rect x="960" y="220" width="360" height="290" rx="28" fill="url(#card3)"/>
+  </g>
+  <g>
+    <circle cx="132" cy="272" r="28" fill="rgba(255,255,255,0.16)"/>
+    <text x="123" y="281" fill="#F8FAFC" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="24" font-weight="800">1</text>
+    <text x="172" y="276" fill="#F8FAFC" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="30" font-weight="800">Install</text>
+    <text x="112" y="330" fill="#EDE9FE" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="18">Use the shared Skills CLI so the repo drops directly into</text>
+    <text x="112" y="356" fill="#EDE9FE" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="18">Codex/OpenCode-compatible locations.</text>
+    <rect x="112" y="392" width="296" height="72" rx="20" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.16)"/>
+    <text x="132" y="433" fill="#FFFFFF" font-family="JetBrains Mono, Consolas, monospace" font-size="18">npx skills add deserveto/</text>
+    <text x="132" y="456" fill="#FFFFFF" font-family="JetBrains Mono, Consolas, monospace" font-size="18">Material-Design-Kit-3-Skills@material-design-3</text>
+  </g>
+  <g>
+    <circle cx="572" cy="272" r="28" fill="rgba(255,255,255,0.18)"/>
+    <text x="563" y="281" fill="#F8FAFC" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="24" font-weight="800">2</text>
+    <text x="612" y="276" fill="#F8FAFC" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="30" font-weight="800">Use</text>
+    <text x="552" y="330" fill="#CCFBF1" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="18">The skill routes the agent to the right references instead</text>
+    <text x="552" y="356" fill="#CCFBF1" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="18">of stuffing every Material detail into one giant prompt.</text>
+    <rect x="552" y="392" width="296" height="72" rx="20" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.16)"/>
+    <text x="573" y="418" fill="#FFFFFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">References loaded on demand:</text>
+    <text x="573" y="442" fill="#FFFFFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16">foundations • components • adaptive</text>
+    <text x="573" y="462" fill="#FFFFFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16">Expressive • Web • Compose • Flutter</text>
+  </g>
+  <g>
+    <circle cx="1012" cy="272" r="28" fill="rgba(255,255,255,0.18)"/>
+    <text x="1003" y="281" fill="#F8FAFC" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="24" font-weight="800">3</text>
+    <text x="1052" y="276" fill="#F8FAFC" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="30" font-weight="800">Verify</text>
+    <text x="992" y="330" fill="#E2E8F0" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="18">Validate the skill package, run tests, then use the bundled</text>
+    <text x="992" y="356" fill="#E2E8F0" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="18">heuristic audit when reviewing web implementations.</text>
+    <rect x="992" y="392" width="296" height="72" rx="20" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.16)"/>
+    <text x="1016" y="420" fill="#FFFFFF" font-family="JetBrains Mono, Consolas, monospace" font-size="16">python .../validate_skill.py</text>
+    <text x="1016" y="445" fill="#FFFFFF" font-family="JetBrains Mono, Consolas, monospace" font-size="16">python -m unittest discover -s tests -v</text>
+    <text x="1016" y="468" fill="#FFFFFF" font-family="JetBrains Mono, Consolas, monospace" font-size="16">python .../audit_m3.py src</text>
+  </g>
+  <path d="M452 364H504" stroke="#94A3B8" stroke-width="6" stroke-linecap="round"/>
+  <path d="M496 352L516 364L496 376" stroke="#94A3B8" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M892 364H944" stroke="#94A3B8" stroke-width="6" stroke-linecap="round"/>
+  <path d="M936 352L956 364L936 376" stroke="#94A3B8" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="80" y="584" width="1240" height="96" rx="24" fill="#FFFFFF" stroke="#E2E8F0"/>
+  <text x="120" y="625" fill="#0F172A" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="22" font-weight="800">Key idea</text>
+  <text x="120" y="656" fill="#475569" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="20">Teach the agent how to reason about Material 3, not just how to imitate a visual style.</text>
+</svg>
