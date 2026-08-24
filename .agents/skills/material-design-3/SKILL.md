@@ -3,7 +3,7 @@ name: material-design-3
 description: Use when creating, implementing, migrating, or reviewing interfaces that are explicitly intended to follow Material Design 3, Material You, or Material 3 Expressive.
 license: MIT
 metadata:
-  version: "0.1.0"
+  version: "0.2.0"
   material-reviewed: "2026-08-24"
 ---
 
@@ -20,7 +20,7 @@ Use this skill only when Material 3/Material You/M3 Expressive is requested or a
 1. Inspect project instructions, dependencies, theme/tokens, shared components, layout conventions, and relevant screens before editing.
 2. Classify the task: new M3 UI, existing-M3 extension, legacy/M2 migration, review/audit, or Expressive enhancement.
 3. Identify the platform. Never translate one platform's Material API literally into another.
-4. Load only the relevant references below.
+4. Load only the relevant references below. When creating or changing typography or shape values, read the dedicated typography or shape reference before choosing values.
 5. Establish information/action hierarchy before color, shape, or motion. Reuse existing semantic tokens and components.
 6. Implement applicable interaction states and adaptive behavior from available window space, not device labels.
 7. Verify accessibility: semantics/names, keyboard/focus, target size, non-color cues, text scaling/reflow, contrast, reduced motion, and localization.
@@ -30,7 +30,9 @@ Use this skill only when Material 3/Material You/M3 Expressive is requested or a
 
 | Need | Read |
 |---|---|
-| Tokens, color, type, shape, motion, elevation, icons | [foundations](references/foundations.md) |
+| Tokens, color, motion, elevation, icons | [foundations](references/foundations.md) |
+| Typography roles, baseline scale, font mapping | [typography](references/typography.md) |
+| Shape scale, corner values, Expressive polygons | [shape](references/shape.md) |
 | Component choice and prominence | [components](references/components.md) |
 | Adaptive layout and accessibility | [adaptive/accessibility](references/adaptive-accessibility.md) |
 | M3 Expressive and restraint | [Expressive](references/expressive.md) |
