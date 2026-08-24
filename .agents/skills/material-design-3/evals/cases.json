@@ -45,6 +45,7 @@
       "assume every Material 2 component maps one-to-one"
     ],
     "references": [
+      "migration",
       "foundations",
       "components"
     ]
@@ -79,6 +80,7 @@
     ],
     "references": [
       "adaptive-accessibility",
+      "layout-spacing",
       "components"
     ]
   },
@@ -95,6 +97,7 @@
     ],
     "references": [
       "adaptive-accessibility",
+      "interaction-states",
       "foundations"
     ]
   },
@@ -147,6 +150,7 @@
     ],
     "references": [
       "platform-flutter",
+      "migration",
       "components"
     ]
   },
@@ -164,7 +168,8 @@
     ],
     "references": [
       "platform-web",
-      "adaptive-accessibility"
+      "adaptive-accessibility",
+      "layout-spacing"
     ]
   },
   {
@@ -214,6 +219,7 @@
     ],
     "references": [
       "foundations",
+      "interaction-states",
       "adaptive-accessibility"
     ]
   },
@@ -300,6 +306,95 @@
       "shape",
       "platform-compose",
       "expressive"
+    ]
+  },
+  {
+    "id": "layout-spacing-system",
+    "prompt": "The desktop version of this Material 3 dashboard currently uses the same narrow phone column with huge empty margins. Redesign the layout without changing its data model.",
+    "required": [
+      "derive regions and pane strategy from available space and task hierarchy",
+      "reuse a coherent spacing system or component defaults",
+      "use wide space to improve information architecture or bound readable content"
+    ],
+    "forbidden": [
+      "only increase outer margins while leaving the compact composition unchanged",
+      "invent unrelated spacing values for each section"
+    ],
+    "references": [
+      "layout-spacing",
+      "adaptive-accessibility"
+    ]
+  },
+  {
+    "id": "interaction-state-contract",
+    "prompt": "Implement a Material 3 async Save icon button for the web, including keyboard use, loading, success, and error behavior.",
+    "required": [
+      "provide semantic button naming and visible keyboard focus",
+      "define pressed/loading/error behavior and prevent unsafe duplicate activation",
+      "preserve a non-motion or reduced-motion understandable state transition"
+    ],
+    "forbidden": [
+      "remove the focus outline without a replacement",
+      "communicate success or error only by color",
+      "leave the control permanently disabled after a recoverable error"
+    ],
+    "references": [
+      "interaction-states",
+      "adaptive-accessibility",
+      "platform-web"
+    ]
+  },
+  {
+    "id": "wear-compose-platform-boundary",
+    "prompt": "Build a Material 3 Expressive activity screen for Wear OS using Compose. The project pins Wear Compose 1.6.2 stable.",
+    "required": [
+      "use Wear Compose Material 3 rather than mobile Compose Material3 components",
+      "respect Wear-specific scaffolds, round-screen layout, rotary/focus, and performance constraints",
+      "stay on the pinned stable line unless an upgrade is explicitly requested"
+    ],
+    "forbidden": [
+      "import the mobile MaterialTheme as the primary Wear theme",
+      "claim Wear Expressive requires the mobile 1.5 alpha Material3 line"
+    ],
+    "references": [
+      "platform-wear",
+      "interaction-states",
+      "layout-spacing"
+    ]
+  },
+  {
+    "id": "migration-phased",
+    "prompt": "Migrate a medium-sized Android app from Material 2 to Material 3 while keeping releases shippable throughout the migration.",
+    "required": [
+      "inventory theme components navigation and dependencies before editing",
+      "propose a phased migration through foundations shared components navigation/adaptive structure screens and cleanup",
+      "track temporary M2/M3 coexistence with an explicit removal boundary"
+    ],
+    "forbidden": [
+      "rewrite all screens at once without a migration boundary",
+      "declare migration complete after changing palette and corner radius"
+    ],
+    "references": [
+      "migration",
+      "platform-compose"
+    ]
+  },
+  {
+    "id": "review-severity",
+    "prompt": "Review this Material 3 checkout screen and report what must be fixed before release versus what is only polish.",
+    "required": [
+      "report findings with evidence impact recommendation and verification",
+      "use severity based on user/release impact",
+      "prioritize platform/accessibility/interaction/adaptive failures before cosmetic polish"
+    ],
+    "forbidden": [
+      "invent a universal Material compliance score",
+      "label cosmetic preference as a blocker without impact evidence"
+    ],
+    "references": [
+      "review-rubric",
+      "interaction-states",
+      "adaptive-accessibility"
     ]
   }
 ]

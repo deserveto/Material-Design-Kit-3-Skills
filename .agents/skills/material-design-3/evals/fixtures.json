@@ -1,0 +1,35 @@
+{
+  "reviewed": "2026-08-24",
+  "purpose": "Portable fixture contracts for repeatable behavioral eval sessions. These describe the repository state the evaluator should provide; they do not pin a specific harness implementation.",
+  "fixtures": {
+    "web-existing-system": {
+      "platform": "web",
+      "stack": "React",
+      "state": "Existing non-Material component system with centralized custom design tokens and accessible shared primitives.",
+      "use_for_cases": ["existing-non-material-system"]
+    },
+    "web-material3": {
+      "platform": "web",
+      "stack": "React",
+      "state": "Material 3 project with centralized semantic tokens, shared controls, browser rendering tooling, and compact/expanded layouts.",
+      "use_for_cases": ["new-web-ui", "semantic-color", "adaptive-list-detail", "touch-target", "visual-verification", "web-type-scale", "shape-system", "layout-spacing-system", "interaction-state-contract", "review-severity"]
+    },
+    "compose-stable": {
+      "platform": "android-compose",
+      "pinned_material3": "1.4.x stable",
+      "state": "Production Android app pinned to stable Compose Material3 with no approved alpha/experimental dependency upgrade.",
+      "use_for_cases": ["compose-stability", "expressive-shape-stability", "migration-phased"]
+    },
+    "wear-stable": {
+      "platform": "wear-compose",
+      "pinned_wear_compose": "1.6.2 stable",
+      "state": "Wear OS app using androidx.wear.compose:compose-material3 and Wear-specific foundation/navigation artifacts.",
+      "use_for_cases": ["wear-compose-platform-boundary"]
+    },
+    "flutter-legacy": {
+      "platform": "flutter",
+      "state": "Older Flutter Material app with legacy navigation patterns and widget/golden tests; Material3 migration is incomplete.",
+      "use_for_cases": ["flutter-migration"]
+    }
+  }
+}
