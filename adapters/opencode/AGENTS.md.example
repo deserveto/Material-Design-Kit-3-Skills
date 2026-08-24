@@ -1,0 +1,7 @@
+## Material Design 3 UI
+
+This project uses Material Design 3.
+
+For UI creation, migration, or review that involves Material Design 3, Material You, or M3 Expressive, load the `material-design-3` skill from `.agents/skills/material-design-3`.
+
+Preserve existing semantic tokens and shared components. Run the project's normal verification plus rendered UI checks when the environment provides them.

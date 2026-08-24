@@ -1,0 +1,6 @@
+interface:
+  display_name: "Material Design 3"
+  short_description: "Implement and review robust Material Design 3 interfaces"
+  default_prompt: "Use the Material Design 3 skill to implement or review this UI while preserving the project's existing architecture, semantic tokens, accessibility, and adaptive behavior."
+policy:
+  allow_implicit_invocation: true
