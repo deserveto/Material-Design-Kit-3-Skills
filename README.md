@@ -1,20 +1,46 @@
-# Material Design Kit 3 Skills
+<p align="center">
+  <img src="assets/banner.svg" alt="Material Design 3 Skill banner" width="100%" />
+</p>
 
-A portable Agent Skills implementation of **Material Design 3**, **Material You**, and **Material 3 Expressive** guidance for coding agents.
+<h1 align="center">Material Design 3 Skill</h1>
 
-The project is built around one canonical skill:
+<p align="center">
+  A portable <strong>Agent Skill</strong> for <strong>Material Design 3</strong>, <strong>Material You</strong>, and <strong>Material 3 Expressive</strong>.
+  <br />
+  Built for coding agents such as <strong>Codex</strong> and <strong>OpenCode</strong>, with one canonical skill source under <code>.agents/skills/</code>.
+</p>
 
-```text
-.agents/skills/material-design-3/
-```
+<p align="center">
+  <a href="https://github.com/deserveto/Material-Design-Kit-3-Skills"><img alt="repo" src="https://img.shields.io/badge/repo-Material--Design--Kit--3--Skills-1f6feb?style=for-the-badge" /></a>
+  <img alt="version" src="https://img.shields.io/badge/version-v0.1.0-7c3aed?style=for-the-badge" />
+  <img alt="skill" src="https://img.shields.io/badge/skill-material--design--3-0f766e?style=for-the-badge" />
+  <img alt="license" src="https://img.shields.io/badge/license-MIT-111827?style=for-the-badge" />
+</p>
 
-That location is intentionally shared by **Codex** and **OpenCode**, so the Material knowledge does not fork into harness-specific prompts.
+<p align="center">
+  <a href="#quick-install">Quick install</a>
+  ·
+  <a href="#what-you-get">What you get</a>
+  ·
+  <a href="#usage">Usage</a>
+  ·
+  <a href="#validation-and-audit">Validation</a>
+  ·
+  <a href="#repository-structure">Structure</a>
+</p>
 
-> **Status:** v0.1.0. The Material/platform research snapshot was reviewed on 2026-08-24. Version-sensitive implementation facts should be re-checked against the primary sources before dependency changes.
+---
 
-## What this skill is trying to solve
+## Why this exists
 
-Most "Material Design" prompts teach an agent a look: purple, round cards, large radii, and shadows. This project instead teaches the agent to reason through:
+Most "Material Design" prompts teach a **look**:
+
+- purple everywhere,
+- round cards,
+- oversized radii,
+- lots of shadows.
+
+This repository teaches an agent a **system** instead:
 
 - semantic design tokens and color roles;
 - typography, shape, motion, elevation, and Material Symbols;
@@ -23,10 +49,203 @@ Most "Material Design" prompts teach an agent a look: purple, round cards, large
 - accessibility and complete interaction states;
 - Material 3 Expressive with restraint;
 - platform-specific implementation differences;
-- stable versus alpha/experimental APIs;
-- deterministic and visual verification.
+- stable versus alpha/experimental API boundaries;
+- deterministic and rendered verification.
 
-It is an **unofficial** community project and is not affiliated with or endorsed by Google.
+It is an **unofficial community project** and is **not affiliated with or endorsed by Google**.
+
+---
+
+## Quick install
+
+The easiest path is through the shared **`skills` CLI** ecosystem.
+
+### Install for the current project
+
+```bash
+npx skills add deserveto/Material-Design-Kit-3-Skills@material-design-3
+```
+
+### Install for Codex
+
+```bash
+npx skills add deserveto/Material-Design-Kit-3-Skills@material-design-3 \
+  --agent codex \
+  --yes
+```
+
+### Install for OpenCode
+
+```bash
+npx skills add deserveto/Material-Design-Kit-3-Skills@material-design-3 \
+  --agent opencode \
+  --yes
+```
+
+### Install globally
+
+```bash
+npx skills add deserveto/Material-Design-Kit-3-Skills@material-design-3 \
+  --global \
+  --yes
+```
+
+### Install for multiple agents
+
+```bash
+npx skills add deserveto/Material-Design-Kit-3-Skills@material-design-3 \
+  --agent codex \
+  --agent opencode \
+  --yes
+```
+
+> The canonical skill name is **`material-design-3`**.
+
+---
+
+## Demo workflow
+
+<p align="center">
+  <img src="assets/demo-flow.svg" alt="Install, use, and verify workflow for the Material Design 3 Skill" width="100%" />
+</p>
+
+### Typical flow
+
+1. Install the skill with `npx skills add ...`
+2. Ask your coding agent to build or review an interface using Material 3
+3. Let the skill route the agent to the right references:
+   - foundations,
+   - components,
+   - accessibility/adaptive layout,
+   - Expressive,
+   - Web / Compose / Flutter
+4. Run project verification plus the included Material audit helper when useful
+5. Review the rendered result, not just the source code
+
+---
+
+## What you get
+
+| Area | What it gives the agent |
+|---|---|
+| **Core skill** | Lean `SKILL.md` with progressive-disclosure routing |
+| **Foundations** | Semantic tokens, color, typography, shape, motion, elevation, icons |
+| **Components** | Prominence, semantics, and common M3 anti-pattern avoidance |
+| **Adaptive + accessibility** | Window-size thinking, navigation adaptation, keyboard/focus, touch targets, contrast, scaling |
+| **Expressive** | Material 3 Expressive guidance with clear restraint rules |
+| **Platform profiles** | Web, Jetpack Compose, and Flutter implementation guidance |
+| **Validator** | Checks the skill package contract and reference integrity |
+| **Audit helper** | Conservative static review for common web-side M3 issues |
+| **Behavioral evals** | Test cases for control-vs-skill evaluation across real agent runs |
+
+---
+
+## Usage
+
+### When to use this skill
+
+Use it when a task is explicitly about:
+
+- creating a new Material 3 UI,
+- extending an existing Material 3 application,
+- migrating from Material 2 / legacy patterns,
+- reviewing a UI for Material 3 alignment,
+- applying Material 3 Expressive carefully,
+- implementing M3 on Web, Compose, or Flutter.
+
+### What the skill will deliberately avoid
+
+This skill tries to stop agents from doing things like:
+
+- forcing Material into a repo that uses another design system,
+- translating Compose APIs literally into web code,
+- hard-coding reference purple everywhere,
+- wrapping every section in cards,
+- overusing FABs, chips, and shadows,
+- stretching phone navigation patterns onto wide layouts,
+- silently using experimental APIs as if they were stable.
+
+---
+
+## Validation and audit
+
+### Validate the skill package
+
+```bash
+python .agents/skills/material-design-3/scripts/validate_skill.py
+```
+
+### Run the repository test suite
+
+```bash
+python -m unittest discover -s tests -v
+```
+
+### Run the heuristic Material audit for a web project
+
+```bash
+python .agents/skills/material-design-3/scripts/audit_m3.py src
+```
+
+### JSON output
+
+```bash
+python .agents/skills/material-design-3/scripts/audit_m3.py --json src
+```
+
+> A clean audit is **not** Material compliance or accessibility certification. It is a conservative reviewer/agent aid.
+
+---
+
+## Behavioral evals
+
+The repository includes a small eval corpus for fresh-session testing with and without the skill.
+
+Covered scenarios include:
+
+- new M3 UI generation,
+- preserving non-Material existing systems,
+- M2/legacy migration,
+- semantic color role usage,
+- adaptive list-detail behavior,
+- touch target and icon semantics,
+- Material 3 Expressive restraint,
+- Compose stable vs experimental API boundaries,
+- Flutter migration,
+- visual verification behavior.
+
+See:
+
+```text
+.agents/skills/material-design-3/evals/
+```
+
+---
+
+## Current platform snapshot
+
+At the current research snapshot (**reviewed 2026-08-24**):
+
+- Google's Material site presents **M3 Expressive** as the current evolution of Material 3.
+- The Figma M3 Design Kit is positioned as updated for Expressive.
+- AndroidX Compose Material3 has a split between **stable** and **alpha/experimental** Expressive-related APIs.
+- Flutter has used Material 3 by default since Flutter 3.16, but migration can still require real component changes.
+
+Version-sensitive facts are recorded separately from stable concepts so the agent does not confuse:
+
+```text
+official Material guidance
+!=
+stable API everywhere
+```
+
+Primary sources and review dates are pinned in:
+
+```text
+.agents/skills/material-design-3/references/sources.md
+```
+
+---
 
 ## Repository structure
 
@@ -57,140 +276,49 @@ adapters/
 └── opencode/
     ├── AGENTS.md.example
     └── opencode.jsonc.example
+
+tests/
+.github/workflows/
+docs/
+assets/
 ```
 
-`SKILL.md` stays intentionally small. Detailed knowledge is loaded from focused references only when the task needs it.
+---
 
-## Install in a repository
+## Manual install fallback
 
-Copy the canonical skill into the target repository:
+If you do not want to use `npx skills`, you can still copy the skill manually:
 
 ```bash
 mkdir -p .agents/skills
 cp -R /path/to/Material-Design-Kit-3-Skills/.agents/skills/material-design-3 .agents/skills/
 ```
 
-Then optionally adapt one of the small `AGENTS.md.example` files into the target repository's own instructions.
-
-### Codex
-
-Codex scans `.agents/skills` in the current repository hierarchy. After installation, invoke explicitly with `$material-design-3`, use `/skills`, or let Codex select it when the task matches the skill description.
-
-For a user-global installation, place the skill at:
+For user-global installation, place it in:
 
 ```text
 ~/.agents/skills/material-design-3/
 ```
 
-The bundled `agents/openai.yaml` adds Codex/ChatGPT-facing metadata without adding external tool dependencies.
-
-### OpenCode
-
-OpenCode also discovers the agent-compatible path:
-
-```text
-.agents/skills/material-design-3/SKILL.md
-```
-
-A user-global copy can live at:
-
-```text
-~/.agents/skills/material-design-3/
-```
-
-OpenCode can load it through its native skill mechanism. `adapters/opencode/opencode.jsonc.example` shows an optional permission entry that explicitly allows this skill.
-
-## Validate the skill package
-
-No third-party Python dependencies are required.
-
-```bash
-python .agents/skills/material-design-3/scripts/validate_skill.py
-```
-
-The validator checks the Agent Skills naming/frontmatter contract, progressive-disclosure line limit, and referenced local files.
-
-Run the repository test suite:
-
-```bash
-python -m unittest discover -s tests -v
-```
-
-## Heuristic web audit
-
-For a web project, the skill includes a conservative review helper:
-
-```bash
-python .agents/skills/material-design-3/scripts/audit_m3.py src
-```
-
-Machine-readable output:
-
-```bash
-python .agents/skills/material-design-3/scripts/audit_m3.py --json src
-```
-
-The current rules review a few high-signal problems such as raw component colors, `transition: all`, and generic React `div`/`span` click targets. Theme custom-property declarations and common generated/dependency directories are excluded.
-
-**A clean audit is not Material Design or accessibility certification.** It is only an agent/reviewer aid.
-
-## Behavioral evals
-
-`.agents/skills/material-design-3/evals/cases.json` contains scenarios for:
-
-- new M3 UI creation;
-- preserving a non-Material existing system;
-- M2/legacy migration;
-- semantic color roles;
-- adaptive list-detail layouts;
-- touch targets and icon semantics;
-- Material 3 Expressive restraint;
-- Compose stable/experimental API boundaries;
-- Flutter migration;
-- visual verification.
-
-See the eval README for the control-vs-skill procedure. The important part is running the same case in fresh sessions **without the skill** and **with the skill**, not simply checking that a prompt "sounds good."
-
-## Current platform snapshot
-
-The reference corpus records volatile implementation facts separately from stable Material concepts. At the 2026-08-24 review:
-
-- Google's Material site presents M3 Expressive as the current Material 3 evolution and advertises an updated Figma M3 Design Kit.
-- AndroidX Compose Material3 lists 1.4.0 stable and 1.5.0-alpha26 alpha; newer Expressive APIs such as `MotionScheme` and `MaterialShapes` need version/status checks before adoption.
-- Flutter has used Material 3 by default since Flutter 3.16, but migration can still require component changes rather than a theme flag alone.
-
-Primary sources and review dates live in `references/sources.md`.
-
-## Design philosophy
-
-The skill follows this order:
-
-```text
-user task
-  -> existing product/design system
-  -> information hierarchy
-  -> Material component semantics
-  -> semantic theme roles
-  -> platform implementation
-  -> interaction + adaptive + accessibility states
-  -> deterministic verification
-  -> rendered verification
-```
-
-That is intentionally different from "make it look Material."
+---
 
 ## Roadmap
 
-Possible later work, after the standalone skill proves itself through real-model evals:
+Possible later work:
 
-- broader static audit rules with explicit false-positive controls;
-- fixture repositories and automated Codex/OpenCode behavior matrices;
+- broader static audit rules with tighter false-positive controls;
+- fixture repositories and automated agent behavior matrices;
+- richer rendered demo examples;
 - Figma-assisted workflows;
 - plugin packaging for wider distribution;
-- additional platform profiles where there is a maintained Material implementation.
+- more platform profiles where Material implementations are maintained.
 
-The canonical Material knowledge should remain in the Agent Skill even if plugins are added later.
+The canonical Material knowledge should remain in the **Agent Skill**, even if plugins are added later.
+
+---
 
 ## License
 
-MIT for repository-authored content. Material Design, Material You, Material Symbols, Android, Flutter, Google, and related names/trademarks belong to their respective owners. External source material remains under its original terms.
+This repository is released under the **MIT License** for repository-authored content.
+
+Material Design, Material You, Material Symbols, Android, Flutter, Google, and related names/trademarks belong to their respective owners. External source material remains under its original terms.
