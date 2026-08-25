@@ -110,7 +110,7 @@ def main(argv: list[str]) -> int:
         return 2
     findings = audit(paths)
     rule_counts = dict(sorted(Counter(item["rule"] for item in findings).items()))
-    disclaimer = "Heuristic review only; this is not certification for Material Design, WCAG, or accessibility."
+    disclaimer = "Heuristic review only; this is not compliance certification for Material Design, WCAG, or accessibility."
     if args.json:
         print(json.dumps({"tool": "audit_m3", "heuristic": True, "strict": args.strict, "disclaimer": disclaimer, "rule_counts": rule_counts, "findings": findings}, indent=2))
     else:

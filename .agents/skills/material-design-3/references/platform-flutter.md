@@ -1,6 +1,6 @@
 # Flutter Material 3
 
-**Reviewed: 2026-08-24.** Current Flutter documentation at review time reflects Flutter 3.44.7; check the target project's SDK before relying on version-specific behavior.
+**Reviewed: 2026-08-25.** Current Flutter documentation at review time reflects Flutter 3.44.7; check the target project's SDK before relying on version-specific behavior.
 
 ## Baseline
 

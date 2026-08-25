@@ -12,7 +12,7 @@ SKILL = ROOT / ".agents/skills/material-design-3"
 class SourceFreshnessTests(unittest.TestCase):
     def run_check(self, skill: Path, *args: str):
         return subprocess.run(
-            [sys.executable, str(SCRIPT), str(skill), "--as-of", "2026-08-24", *args],
+            [sys.executable, str(SCRIPT), str(skill), "--as-of", "2026-08-25", *args],
             cwd=ROOT,
             text=True,
             capture_output=True,

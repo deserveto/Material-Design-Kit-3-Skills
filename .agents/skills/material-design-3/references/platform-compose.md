@@ -1,6 +1,6 @@
 # Jetpack Compose Material 3
 
-**Reviewed: 2026-08-24.** Re-check primary sources before relying on version-sensitive APIs.
+**Reviewed: 2026-08-25.** Re-check primary sources before relying on version-sensitive APIs.
 
 ## Current version snapshot
 
@@ -48,7 +48,7 @@ Therefore:
 
 ## Adaptive Compose
 
-Use current window size/adaptive APIs rather than device-type tests. Material3 Adaptive provides scaffolds/patterns for list-detail, supporting panes, and adaptive navigation. Match usage to the project's current adaptive dependency version.
+Use current window size/adaptive APIs rather than device-type tests. Material3 Adaptive stable 1.3.0 provides current scaffolds/patterns for list-detail, supporting panes, adaptive navigation, posture-aware behavior, and newer Navigation3 integration paths. Match usage to the project's current adaptive dependency version rather than copying examples from a newer channel.
 
 ## Accessibility
 

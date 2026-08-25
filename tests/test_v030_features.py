@@ -13,12 +13,7 @@ AUDIT = SKILL / "scripts/audit_m3.py"
 
 class V030ReferenceTests(unittest.TestCase):
     def test_component_decision_guides_are_split_by_interaction_family(self):
-        expected = {
-            "components-actions.md": "destructive",
-            "components-navigation.md": "Navigation rail",
-            "components-input-selection.md": "checkbox",
-            "components-feedback-containment.md": "Snackbar",
-        }
+        expected = {"components-actions.md": "destructive", "components-navigation.md": "Navigation rail", "components-input-selection.md": "checkbox", "components-feedback-containment.md": "Snackbar"}
         for name, phrase in expected.items():
             path = REFERENCES / name
             self.assertTrue(path.is_file(), name)
@@ -31,13 +26,7 @@ class V030ReferenceTests(unittest.TestCase):
         self.assertTrue({"focus", "pressed", "selected", "loading", "error"}.issubset(states["states"]))
 
     def test_new_reference_set_exists_and_is_focused(self):
-        expected = {
-            "layout-spacing.md": ("available space", "spacing"),
-            "interaction-states.md": ("focus", "pressed"),
-            "platform-wear.md": ("Wear Compose Material 3", "1.6.2"),
-            "migration.md": ("Material 2", "phased"),
-            "review-rubric.md": ("BLOCKER", "HIGH"),
-        }
+        expected = {"layout-spacing.md": ("available space", "spacing"), "interaction-states.md": ("focus", "pressed"), "platform-wear.md": ("Wear Compose Material 3", "1.6.2"), "migration.md": ("Material 2", "phased"), "review-rubric.md": ("BLOCKER", "HIGH")}
         for name, phrases in expected.items():
             path = REFERENCES / name
             self.assertTrue(path.is_file(), name)
@@ -47,26 +36,14 @@ class V030ReferenceTests(unittest.TestCase):
 
     def test_skill_routes_new_guides_and_advances_version(self):
         text = (SKILL / "SKILL.md").read_text(encoding="utf-8")
-        for name in (
-            "layout-spacing.md",
-            "interaction-states.md",
-            "platform-wear.md",
-            "migration.md",
-            "review-rubric.md",
-        ):
+        for name in ("layout-spacing.md", "interaction-states.md", "platform-wear.md", "migration.md", "review-rubric.md"):
             self.assertIn(f"references/{name}", text)
-        self.assertIn('version: "0.3.0"', text)
+        self.assertIn('version: "0.4.0"', text)
         self.assertIn("M3", text.split("---", 2)[1])
 
     def test_eval_corpus_covers_new_failure_modes(self):
         ids = {c["id"] for c in json.loads((SKILL / "evals/cases.json").read_text(encoding="utf-8"))}
-        expected = {
-            "layout-spacing-system",
-            "interaction-state-contract",
-            "wear-compose-platform-boundary",
-            "migration-phased",
-            "review-severity",
-        }
+        expected = {"layout-spacing-system", "interaction-state-contract", "wear-compose-platform-boundary", "migration-phased", "review-severity"}
         self.assertTrue(expected.issubset(ids), expected - ids)
 
     def test_eval_fixtures_and_result_schema_are_reproducible(self):
@@ -112,12 +89,7 @@ class V030AuditTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             path = Path(tmp) / "bad.css"
             path.write_text("button:focus { outline: 0; }\n", encoding="utf-8")
-            result = subprocess.run(
-                [sys.executable, str(AUDIT), "--strict", str(path)],
-                cwd=ROOT,
-                text=True,
-                capture_output=True,
-            )
+            result = subprocess.run([sys.executable, str(AUDIT), "--strict", str(path)], cwd=ROOT, text=True, capture_output=True)
             self.assertEqual(result.returncode, 1, result.stdout + result.stderr)
 
 
