@@ -5,23 +5,7 @@
   "type": "array",
   "items": {
     "type": "object",
-    "required": [
-      "case_id",
-      "fixture_id",
-      "harness",
-      "harness_version",
-      "model",
-      "reasoning_setting",
-      "date",
-      "skill_commit",
-      "condition",
-      "skill_loaded",
-      "required_passed",
-      "required_total",
-      "forbidden_observed",
-      "forbidden_total",
-      "notes"
-    ],
+    "required": ["case_id", "fixture_id", "harness", "harness_version", "model", "reasoning_setting", "date", "skill_commit", "condition", "skill_loaded", "required_passed", "required_total", "forbidden_observed", "forbidden_total", "notes"],
     "properties": {
       "case_id": {"type": "string"},
       "fixture_id": {"type": "string"},
@@ -38,6 +22,7 @@
       "forbidden_observed": {"type": "integer", "minimum": 0},
       "forbidden_total": {"type": "integer", "minimum": 1},
       "dependency_claims_valid": {"type": "boolean"},
+      "catastrophic_failure": {"type": "boolean"},
       "output_artifact": {"type": "string"},
       "notes": {"type": "string"}
     },

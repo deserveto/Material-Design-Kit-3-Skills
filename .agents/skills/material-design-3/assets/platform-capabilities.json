@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "reviewed": "2026-08-25",
+  "disclaimer": "Decision aid only. Inspect the target project's pinned dependencies and current upstream API docs before version-sensitive implementation.",
+  "statuses": ["stable", "experimental", "maintenance", "partial", "unavailable", "platform-native"],
+  "platforms": {
+    "compose-material3": {"library_status": "active", "stable": "1.4.0", "preview": "1.5.0-alpha26", "adaptive_stable": "1.3.0", "source_id": "compose-material3-releases", "greenfield": "preferred for modern Android Material UI"},
+    "wear-compose-material3": {"library_status": "active", "stable": "1.6.2", "preview": "1.7.0-beta01", "source_id": "wear-compose-releases", "greenfield": "preferred for Wear OS Material UI"},
+    "flutter-material": {"library_status": "active", "docs_snapshot": "3.44.7", "material3_default_since": "3.16", "source_id": "flutter-material", "greenfield": "supported"},
+    "material-web": {"library_status": "maintenance", "latest": "2.5.0", "source_id": "material-web-status", "greenfield": "use only when the maintained component set fits the product; do not assume future component parity"},
+    "android-views-mdc": {"library_status": "maintenance", "latest": "1.14.0", "source_id": "android-views-status", "greenfield": "prefer Compose; use this profile to maintain or migrate existing Views apps"}
+  },
+  "components": {
+    "buttons": {
+      "compose-material3": {"status": "stable"}, "wear-compose-material3": {"status": "stable", "note": "Use Wear-specific button families."}, "flutter-material": {"status": "stable"}, "material-web": {"status": "maintenance"}, "android-views-mdc": {"status": "maintenance"}
+    },
+    "search": {
+      "compose-material3": {"status": "stable", "note": "Check pinned Material3 version for exact SearchBar/SearchView API."}, "wear-compose-material3": {"status": "partial", "note": "Use Wear-specific patterns; do not copy mobile SearchBar APIs."}, "flutter-material": {"status": "stable", "note": "SearchBar/SearchAnchor are Material widgets; inspect SDK version."}, "material-web": {"status": "partial", "note": "Official Material web guidance/component parity is limited by maintenance mode."}, "android-views-mdc": {"status": "maintenance", "minimum": "1.14.0 for Expressive search styles"}
+    },
+    "navigation": {
+      "compose-material3": {"status": "stable"}, "wear-compose-material3": {"status": "stable", "note": "Wear navigation differs from phone/tablet navigation."}, "flutter-material": {"status": "stable"}, "material-web": {"status": "partial"}, "android-views-mdc": {"status": "maintenance"}
+    },
+    "text-fields": {
+      "compose-material3": {"status": "stable"}, "wear-compose-material3": {"status": "partial", "note": "Text entry is constrained on Wear; prefer platform-appropriate flows."}, "flutter-material": {"status": "stable"}, "material-web": {"status": "maintenance"}, "android-views-mdc": {"status": "maintenance"}
+    },
+    "selection-controls": {
+      "compose-material3": {"status": "stable"}, "wear-compose-material3": {"status": "stable"}, "flutter-material": {"status": "stable"}, "material-web": {"status": "maintenance"}, "android-views-mdc": {"status": "maintenance"}
+    },
+    "sliders": {
+      "compose-material3": {"status": "stable"}, "wear-compose-material3": {"status": "stable", "note": "Use Wear-specific controls."}, "flutter-material": {"status": "stable"}, "material-web": {"status": "maintenance"}, "android-views-mdc": {"status": "maintenance"}
+    },
+    "dialogs-sheets": {
+      "compose-material3": {"status": "stable"}, "wear-compose-material3": {"status": "partial", "note": "Use Wear-specific dialogs/overlays; mobile sheets are not a literal mapping."}, "flutter-material": {"status": "stable"}, "material-web": {"status": "partial"}, "android-views-mdc": {"status": "maintenance"}
+    },
+    "progress": {
+      "compose-material3": {"status": "stable"}, "wear-compose-material3": {"status": "stable"}, "flutter-material": {"status": "stable"}, "material-web": {"status": "maintenance"}, "android-views-mdc": {"status": "maintenance", "minimum": "1.14.0 for Expressive progress styles"}
+    },
+    "carousel": {
+      "compose-material3": {"status": "stable", "note": "Verify exact carousel API in the pinned version."}, "wear-compose-material3": {"status": "unavailable", "note": "Do not import mobile carousel patterns into Wear by default."}, "flutter-material": {"status": "stable", "note": "Use current Flutter Material carousel widgets when supported by the target SDK."}, "material-web": {"status": "unavailable", "note": "Do not assume official component parity."}, "android-views-mdc": {"status": "partial"}
+    },
+    "expressive-shapes": {
+      "compose-material3": {"status": "experimental", "minimum": "1.5.0-alpha", "api": "MaterialShapes / ExperimentalMaterial3ExpressiveApi"}, "wear-compose-material3": {"status": "stable", "note": "Wear M3 Expressive is supported, but APIs are Wear-specific."}, "flutter-material": {"status": "partial", "note": "Implement the design principle with Flutter-supported primitives; do not copy Compose APIs."}, "material-web": {"status": "partial", "note": "2.5.0 ships Expressive token versions; component expansion remains constrained by maintenance mode."}, "android-views-mdc": {"status": "maintenance", "minimum": "1.14.0 for Material3Expressive themes/styles"}
+    },
+    "motion-scheme": {
+      "compose-material3": {"status": "experimental", "minimum": "1.5.0-alpha26", "api": "MotionScheme"}, "wear-compose-material3": {"status": "stable", "note": "Use Wear-specific Material3 motion APIs."}, "flutter-material": {"status": "partial"}, "material-web": {"status": "partial"}, "android-views-mdc": {"status": "maintenance"}
+    }
+  }
+}

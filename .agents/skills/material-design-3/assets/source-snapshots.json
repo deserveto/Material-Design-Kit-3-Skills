@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "reviewed": "2026-08-25",
+  "sources": [
+    {"id": "agent-skills-spec", "kind": "skill-spec", "url": "https://agentskills.io/specification", "reviewed": "2026-08-25"},
+    {"id": "material3-home", "kind": "design-system", "url": "https://m3.material.io/", "reviewed": "2026-08-25", "facts": {"current_direction": "Material 3 Expressive"}},
+    {"id": "compose-material3-releases", "kind": "platform-release", "url": "https://developer.android.com/jetpack/androidx/releases/compose-material3", "reviewed": "2026-08-25", "facts": {"stable": "1.4.0", "preview": "1.5.0-alpha26"}},
+    {"id": "compose-material3-adaptive", "kind": "platform-release", "url": "https://developer.android.com/jetpack/androidx/releases/compose-material3-adaptive", "reviewed": "2026-08-25", "facts": {"stable": "1.3.0"}},
+    {"id": "wear-compose-releases", "kind": "platform-release", "url": "https://developer.android.com/jetpack/androidx/releases/wear-compose", "reviewed": "2026-08-25", "facts": {"stable": "1.6.2", "preview": "1.7.0-beta01"}},
+    {"id": "flutter-material", "kind": "platform-docs", "url": "https://docs.flutter.dev/ui/design/material", "reviewed": "2026-08-25", "facts": {"docs_snapshot": "3.44.7", "material3_default_since": "3.16"}},
+    {"id": "material-web-releases", "kind": "platform-release", "url": "https://github.com/material-components/material-web/releases", "reviewed": "2026-08-25", "facts": {"latest": "2.5.0"}},
+    {"id": "material-web-status", "kind": "platform-status", "url": "https://github.com/material-components/material-web/discussions/5642", "reviewed": "2026-08-25", "facts": {"library_status": "maintenance"}},
+    {"id": "android-views-status", "kind": "platform-status", "url": "https://github.com/material-components/material-components-android", "reviewed": "2026-08-25", "facts": {"library_status": "maintenance", "preferred_new_android_ui": "Compose"}},
+    {"id": "android-views-releases", "kind": "platform-release", "url": "https://github.com/material-components/material-components-android/releases", "reviewed": "2026-08-25", "facts": {"latest": "1.14.0", "expressive": "Material3Expressive themes/styles"}},
+    {"id": "dtcg-2025-10", "kind": "token-spec", "url": "https://www.designtokens.org/TR/2025.10/format/", "reviewed": "2026-08-25", "facts": {"status": "stable", "published": "2025-10-28"}},
+    {"id": "material-color-utilities", "kind": "color-tooling", "url": "https://github.com/material-foundation/material-color-utilities", "reviewed": "2026-08-25", "facts": {"capabilities": ["HCT", "tonal palettes", "dynamic schemes", "contrast levels"]}},
+    {"id": "wcag-22", "kind": "accessibility-standard", "url": "https://www.w3.org/TR/WCAG22/", "reviewed": "2026-08-25"},
+    {"id": "aria-apg", "kind": "accessibility-patterns", "url": "https://www.w3.org/WAI/ARIA/apg/", "reviewed": "2026-08-25"}
+  ]
+}
