@@ -12,7 +12,7 @@
 
 <p align="center">
   <a href="https://github.com/deserveto/Material-Design-Kit-3-Skills"><img alt="repo" src="https://img.shields.io/badge/repo-Material--Design--Kit--3--Skills-1f6feb?style=for-the-badge" /></a>
-  <img alt="version" src="https://img.shields.io/badge/version-v0.3.0-7c3aed?style=for-the-badge" />
+  <img alt="version" src="https://img.shields.io/badge/version-v0.4.0-7c3aed?style=for-the-badge" />
   <img alt="skill" src="https://img.shields.io/badge/skill-material--design--3-0f766e?style=for-the-badge" />
   <img alt="license" src="https://img.shields.io/badge/license-MIT-111827?style=for-the-badge" />
 </p>
@@ -22,9 +22,9 @@
   ·
   <a href="#what-you-get">What you get</a>
   ·
-  <a href="#usage">Usage</a>
-  ·
   <a href="#validation-and-audit">Validation</a>
+  ·
+  <a href="#behavioral-evals">Evals</a>
   ·
   <a href="#repository-structure">Structure</a>
 </p>
@@ -33,27 +33,25 @@
 
 ## Why this exists
 
-Most "Material Design" prompts teach a **look**:
-
-- purple everywhere,
-- round cards,
-- oversized radii,
-- lots of shadows.
+Most "Material Design" prompts teach a **look**: purple everywhere, round cards, oversized radii, and lots of shadows.
 
 This repository teaches an agent a **system** instead:
 
 - semantic design tokens and color roles;
+- design intent before styling;
+- deterministic color-scheme and token interoperability guidance;
 - typography, shape, layout/spacing, motion, elevation, and Material Symbols;
 - component choice by interaction semantics and hierarchy;
-- complete focus/pressed/selected/loading/error state contracts;
+- complete focus/pressed/selected/loading/error contracts;
 - adaptive layouts rather than stretched phone screens;
-- accessibility and rendered verification;
+- WCAG/ARIA-aware web accessibility and rendered verification;
 - Material 3 Expressive with restraint;
-- Web, mobile Compose, Wear Compose, and Flutter platform boundaries;
+- Web, Compose, Wear Compose, Flutter, and existing Android Views boundaries;
 - phased Material 2/legacy migration;
 - evidence-based review severity;
-- stable versus alpha/experimental API boundaries;
-- deterministic behavioral eval contracts and maintenance checks.
+- stable vs preview/experimental/maintenance API boundaries;
+- machine-readable platform/source snapshots;
+- deterministic scripts plus behavioral eval contracts.
 
 It is an **unofficial community project** and is **not affiliated with or endorsed by Google**.
 
@@ -61,15 +59,13 @@ It is an **unofficial community project** and is **not affiliated with or endors
 
 ## Quick install
 
-The easiest path is through the shared **`skills` CLI** ecosystem.
-
-### Install for the current project
+### Current project
 
 ```bash
 npx skills add deserveto/Material-Design-Kit-3-Skills@material-design-3
 ```
 
-### Install for Codex
+### Codex
 
 ```bash
 npx skills add deserveto/Material-Design-Kit-3-Skills@material-design-3 \
@@ -77,7 +73,7 @@ npx skills add deserveto/Material-Design-Kit-3-Skills@material-design-3 \
   --yes
 ```
 
-### Install for OpenCode
+### OpenCode
 
 ```bash
 npx skills add deserveto/Material-Design-Kit-3-Skills@material-design-3 \
@@ -85,20 +81,11 @@ npx skills add deserveto/Material-Design-Kit-3-Skills@material-design-3 \
   --yes
 ```
 
-### Install globally
+### Global
 
 ```bash
 npx skills add deserveto/Material-Design-Kit-3-Skills@material-design-3 \
   --global \
-  --yes
-```
-
-### Install for multiple agents
-
-```bash
-npx skills add deserveto/Material-Design-Kit-3-Skills@material-design-3 \
-  --agent codex \
-  --agent opencode \
   --yes
 ```
 
@@ -112,21 +99,16 @@ npx skills add deserveto/Material-Design-Kit-3-Skills@material-design-3 \
   <img src="assets/demo-flow.svg" alt="Install, use, and verify workflow for the Material Design 3 Skill" width="100%" />
 </p>
 
-### Typical flow
+A typical run is:
 
-1. Install the skill with `npx skills add ...`
-2. Ask your coding agent to build, migrate, or review an interface using Material 3
-3. Let the skill route the agent to only the references it needs:
-   - foundations / typography / shape,
-   - layout and spacing,
-   - specific component families,
-   - interaction states,
-   - adaptive/accessibility,
-   - migration or review rubric,
-   - Expressive,
-   - Web / Compose / Wear / Flutter
-4. Run project verification plus the included Material audit helper when useful
-5. Review the rendered result and relevant states, not just the source code
+1. Install the skill.
+2. Ask the agent to build, migrate, or review Material 3 UI.
+3. The skill inspects the existing stack/theme/components before choosing implementation primitives.
+4. For substantial new/redesign work it derives a small design-intent model before styling.
+5. It loads only the relevant references and machine-readable capability/source data.
+6. It implements semantic tokens, appropriate components, complete states, accessibility, and adaptive behavior.
+7. It runs project verification plus the bundled static/runtime checks when useful.
+8. It inspects the rendered result rather than declaring visual correctness from source alone.
 
 ---
 
@@ -135,53 +117,46 @@ npx skills add deserveto/Material-Design-Kit-3-Skills@material-design-3 \
 | Area | What it gives the agent |
 |---|---|
 | **Core skill** | Lean `SKILL.md` with progressive-disclosure routing |
+| **Design intent** | Primary-task, hierarchy, density, brand, adaptive, and Expressive-intensity reasoning |
 | **Foundations** | Semantic tokens, color, motion, elevation, and icons |
+| **Token interoperability** | DTCG 2025.10-oriented interchange guidance and mapping into existing project token systems |
+| **Color system** | Material Color Utilities / HCT workflow for deterministic scheme generation instead of guessed hex values |
 | **Typography guide** | Full 15-role baseline scale, custom-font mapping, scaling, and platform translation |
-| **Shape guide** | Corner scale, Compose baseline values, newer alpha slots, and all 35 experimental MaterialShapes |
+| **Shape guide** | Corner scale, Compose baseline values, newer slots, and all 35 experimental MaterialShapes |
 | **Layout + spacing** | Structural regions, spacing systems, insets, readable width, and adaptive composition |
-| **Component decision guides** | Separate action, navigation, input/selection, and feedback/containment rules |
+| **Component guides** | Action, navigation, input/selection, containment, plus advanced search/picker/menu/slider contracts |
 | **Interaction states** | Focus, pressed, selected, disabled, loading, error, async recovery, and reduced-motion contracts |
-| **Adaptive + accessibility** | Window-size thinking, navigation adaptation, keyboard/focus, touch targets, contrast, scaling |
+| **Adaptive + accessibility** | Window-space thinking, navigation adaptation, keyboard/focus, targets, contrast, scaling |
+| **Web accessibility** | WCAG 2.2 / ARIA-oriented implementation and verification checks |
 | **Migration guide** | Phased Material 2/legacy → M3 migration instead of cosmetic reskinning |
 | **Review rubric** | BLOCKER/HIGH/MEDIUM/LOW findings with evidence, impact, recommendation, verification |
 | **Expressive** | Material 3 Expressive guidance with clear restraint rules |
-| **Platform profiles** | Web, Android Compose, Wear Compose Material 3, and Flutter implementation guidance |
-| **Machine-readable assets** | Typography, shape, action-prominence, and interaction-state data for deterministic tooling |
-| **Validator** | Checks the skill package contract and reference integrity |
-| **Audit helper** | Conservative static review for common web-side M3 issues with optional strict mode |
-| **Behavioral evals** | Cases, fixture contracts, and a stable result schema for control-vs-skill runs |
-| **Freshness guard** | Monthly CI check that flags Material source research when its review date becomes stale |
+| **Platform profiles** | Web, Android Compose, Wear Compose Material 3, Flutter, and Android Views maintenance/migration |
+| **Capability matrix** | `platform-capabilities.json` for reviewed platform/component availability and stability boundaries |
+| **Source snapshots** | `source-snapshots.json` with granular source-family review dates and volatile facts |
+| **Static audit** | Dependency-free source review with optional strict mode and machine-readable rule counts |
+| **Runtime audit** | Optional Playwright + axe rendered checks without making Node dependencies mandatory for skill installation |
+| **Behavioral evals** | Cases, fixture contracts, result schema, provenance rules, and deterministic result summarization |
+| **Freshness guard** | Package-level and per-source staleness detection |
 
 ---
 
 ## Usage
 
-### When to use this skill
+Use the skill when a task is explicitly about creating/extending Material 3 UI, migrating from Material 2 or legacy Material, reviewing Material alignment, applying M3 Expressive, maintaining/migrating an existing Views-based Android Material app, or implementing Material semantics on Web, Compose, Wear Compose, or Flutter.
 
-Use it when a task is explicitly about:
+The skill deliberately avoids forcing Material into unrelated design systems, treating Material as “purple rounded cards,” copying APIs across platforms, silently upgrading to experimental libraries, treating Material Web maintenance mode as full future parity, recommending Android Views as the default greenfield Android stack, and inventing behavioral benchmark numbers.
 
-- creating a new Material 3 / M3 UI,
-- extending an existing Material 3 application,
-- migrating from Material 2 / legacy patterns,
-- reviewing a UI for Material 3 alignment,
-- applying Material 3 Expressive carefully,
-- implementing M3 on Web, Android Compose, Wear OS Compose, or Flutter.
+### Machine-readable lookup
 
-### What the skill will deliberately avoid
+For platform/version-sensitive work, the agent can consult:
 
-This skill tries to stop agents from doing things like:
+```text
+.agents/skills/material-design-3/assets/platform-capabilities.json
+.agents/skills/material-design-3/assets/source-snapshots.json
+```
 
-- forcing Material into a repo that uses another design system,
-- translating Compose APIs literally into web code,
-- using mobile Compose Material3 as the primary Wear OS component library,
-- hard-coding reference purple everywhere,
-- inventing random radii and spacing per component,
-- wrapping every section in cards,
-- overusing FABs, chips, shadows, or Expressive shapes,
-- removing keyboard focus outlines without a replacement,
-- stretching phone navigation patterns onto wide layouts,
-- calling a color/radius reskin a complete M2→M3 migration,
-- silently using experimental APIs as if they were stable.
+These are **reviewed snapshots**, not replacements for checking the target project's pinned dependencies and live upstream docs before a version-sensitive dependency change.
 
 ---
 
@@ -191,11 +166,6 @@ This skill tries to stop agents from doing things like:
 
 ```bash
 python .agents/skills/material-design-3/scripts/validate_skill.py
-```
-
-CI also runs the official Agent Skills reference validator:
-
-```bash
 skills-ref validate .agents/skills/material-design-3
 ```
 
@@ -205,90 +175,102 @@ skills-ref validate .agents/skills/material-design-3
 python -m unittest discover -s tests -v
 ```
 
-### Run the heuristic Material audit for a web project
+### Static Material/web audit
 
 ```bash
 python .agents/skills/material-design-3/scripts/audit_m3.py src
-```
-
-### JSON output
-
-```bash
 python .agents/skills/material-design-3/scripts/audit_m3.py --json src
-```
-
-### Strict CI/review mode
-
-```bash
 python .agents/skills/material-design-3/scripts/audit_m3.py --strict src
 ```
 
-`--strict` returns exit code `1` when any heuristic finding exists. It is opt-in because findings are review candidates, not automatic proof of a defect.
+The static audit remains intentionally conservative. v0.4.0 adds stronger signals for disabled viewport zoom and disabled text-size adjustment, while keeping fixed-pixel typography as a review candidate rather than calling it an accessibility failure by itself.
 
-### Check source-review freshness
+### Optional rendered runtime audit
+
+`audit_runtime.mjs --help` has no optional dependency requirement. To actually audit a running web app, install the runtime tools in the **target project**:
+
+```bash
+npm install --save-dev playwright @axe-core/playwright
+```
+
+Then run:
+
+```bash
+node .agents/skills/material-design-3/scripts/audit_runtime.mjs \
+  --base-url http://localhost:3000 \
+  --paths /,/settings
+```
+
+JSON/strict modes are also supported:
+
+```bash
+node .agents/skills/material-design-3/scripts/audit_runtime.mjs \
+  --base-url http://localhost:3000 \
+  --paths /,/settings \
+  --json \
+  --strict
+```
+
+It collects axe violations, browser/page errors, horizontal overflow, and a basic keyboard-focus probe at narrow and wide viewports by default.
+
+> A clean static or runtime audit is **not** Material, WCAG, or accessibility certification.
+
+### Check research freshness
 
 ```bash
 python .agents/skills/material-design-3/scripts/check_source_freshness.py --max-age-days 45
+python .agents/skills/material-design-3/scripts/check_source_freshness.py --max-age-days 45 --json
 ```
 
-> A clean audit is **not** Material compliance or accessibility certification. It is a conservative reviewer/agent aid.
+v0.4.0 checks both the package review date and granular source-family dates from `source-snapshots.json`.
 
 ---
 
 ## Behavioral evals
 
-The repository includes a harness-neutral eval corpus for fresh-session testing with and without the skill.
+The repository includes a harness-neutral corpus for fresh-session control-vs-skill testing.
 
-Covered scenarios include:
-
-- new M3 UI generation,
-- preserving non-Material existing systems,
-- M2/legacy phased migration,
-- semantic color role usage,
-- adaptive list-detail and layout/spacing behavior,
-- touch target, focus, loading/error, and icon semantics,
-- Material 3 Expressive restraint,
-- Compose stable vs experimental API boundaries,
-- Wear Compose vs mobile Compose platform boundaries,
-- Flutter migration,
-- evidence-based review severity,
-- visual verification behavior.
-
-`fixtures.json` defines repeatable environment contracts and `results.schema.json` defines how to record harness/model/commit/control-vs-skill results.
-
-See:
+Real result files belong in:
 
 ```text
-.agents/skills/material-design-3/evals/
+.agents/skills/material-design-3/evals/results/
 ```
+
+Do **not** commit synthetic examples as benchmark evidence. A result only counts as a benchmark run when it came from a documented fresh session with provenance.
+
+Summarize a recorded result set with:
+
+```bash
+python .agents/skills/material-design-3/evals/summarize_results.py results.json
+python .agents/skills/material-design-3/evals/summarize_results.py results.json --json
+```
+
+The summarizer groups by harness/model/condition and reports required-behavior pass rate, forbidden-behavior observation rate, run count, and catastrophic-failure count when recorded. It does not execute models or create evidence.
 
 ---
 
 ## Current platform snapshot
 
-At the current research snapshot (**reviewed 2026-08-24**):
+At the current research snapshot (**reviewed 2026-08-25**):
 
-- Google's Material site presents **M3 Expressive** as the current evolution of Material 3.
-- AndroidX Compose Material3 is **1.4.0 stable** with a separate **1.5.0-alpha26** line containing newer Expressive APIs.
-- Wear Compose is **1.6.2 stable** and its Wear-specific Material3 library already supports Material 3 Expressive; Wear must not be treated as mobile Compose Material3.
-- Flutter has used Material 3 by default since Flutter 3.16, but migration can still require real component changes.
-- Agent Skills defines progressive disclosure and recommends `skills-ref validate` for format validation.
+- Material 3 Expressive remains the current Material direction.
+- AndroidX Compose Material3 is **1.4.0 stable** with **1.5.0-alpha26** as the current alpha snapshot; Material3 Adaptive is **1.3.0 stable**.
+- Wear Compose is **1.6.2 stable** with **1.7.0-beta01** as the current preview snapshot; Wear uses its own Material3 APIs.
+- Flutter documentation reflects **3.44.7** and Material 3 has been the default since Flutter 3.16.
+- Material Web has a **2.5.0** release but remains in official **maintenance mode**.
+- Material Components for Android Views is at **1.14.0** and is in **maintenance mode**; new Android Material work should prefer Compose when viable.
+- DTCG **2025.10** is the first stable Design Tokens Community Group interchange format.
 
 Version-sensitive facts are recorded separately from stable concepts so the agent does not confuse:
 
 ```text
 official Material guidance
-!=
-stable API everywhere
-!=
-the same API on every platform
+!= stable API everywhere
+!= the same API on every platform
+!= an actively expanding component library everywhere
 ```
 
-Primary sources and review dates are pinned in:
-
-```text
-.agents/skills/material-design-3/references/sources.md
-```
+Primary sources are tracked in `references/sources.md` and `assets/source-snapshots.json`.
 
 ---
 
@@ -303,44 +285,45 @@ Primary sources and review dates are pinned in:
 │   ├── README.md
 │   ├── cases.json
 │   ├── fixtures.json
-│   └── results.schema.json
+│   ├── results.schema.json
+│   ├── summarize_results.py
+│   └── results/
+│       └── README.md
 ├── references/
-│   ├── adaptive-accessibility.md
-│   ├── components.md
-│   ├── components-actions.md
-│   ├── components-navigation.md
-│   ├── components-input-selection.md
-│   ├── components-feedback-containment.md
-│   ├── expressive.md
+│   ├── design-intent.md
+│   ├── design-tokens.md
+│   ├── color-system.md
 │   ├── foundations.md
-│   ├── interaction-states.md
-│   ├── layout-spacing.md
-│   ├── migration.md
-│   ├── review-rubric.md
 │   ├── typography.md
 │   ├── shape.md
+│   ├── layout-spacing.md
+│   ├── components*.md
+│   ├── interaction-states.md
+│   ├── adaptive-accessibility.md
+│   ├── accessibility-web.md
+│   ├── expressive.md
+│   ├── migration.md
+│   ├── review-rubric.md
+│   ├── platform-web.md
 │   ├── platform-compose.md
 │   ├── platform-wear.md
 │   ├── platform-flutter.md
-│   ├── platform-web.md
+│   ├── platform-android-views.md
 │   └── sources.md
 ├── assets/
+│   ├── platform-capabilities.json
+│   ├── source-snapshots.json
 │   ├── typography-baseline.json
 │   ├── shape-baseline.json
 │   ├── component-prominence.json
 │   └── interaction-states.json
 └── scripts/
     ├── audit_m3.py
+    ├── audit_runtime.mjs
     ├── check_source_freshness.py
     └── validate_skill.py
 
 adapters/
-├── codex/
-│   └── AGENTS.md.example
-└── opencode/
-    ├── AGENTS.md.example
-    └── opencode.jsonc.example
-
 tests/
 .github/workflows/
 docs/
@@ -351,31 +334,18 @@ assets/
 
 ## Manual install fallback
 
-If you do not want to use `npx skills`, you can still copy the skill manually:
-
 ```bash
 mkdir -p .agents/skills
 cp -R /path/to/Material-Design-Kit-3-Skills/.agents/skills/material-design-3 .agents/skills/
 ```
 
-For user-global installation, place it in:
-
-```text
-~/.agents/skills/material-design-3/
-```
+For user-global installation, place it in `~/.agents/skills/material-design-3/`.
 
 ---
 
 ## Roadmap
 
-Possible later work:
-
-- SARIF output and additional audit rules with tighter false-positive controls;
-- real fixture repositories plus published multi-model behavior matrices;
-- richer rendered demo examples and golden comparisons;
-- Figma-assisted workflows;
-- plugin packaging for wider distribution;
-- additional platform profiles where Material implementations are maintained.
+Possible later work includes SARIF output, real fixture repositories plus published multi-model behavior matrices, richer rendered/golden comparisons, Figma-assisted workflows, plugin packaging, and additional maintained platform profiles.
 
 The canonical Material knowledge should remain in the **Agent Skill**, even if plugins are added later.
 

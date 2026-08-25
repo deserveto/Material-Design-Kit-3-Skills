@@ -26,7 +26,29 @@ jobs:
       - name: Validate eval JSON
         run: python -m json.tool .agents/skills/material-design-3/evals/cases.json > /dev/null
       - name: Compile Python
-        run: python -m compileall -q .agents/skills/material-design-3/scripts tests
+        run: python -m compileall -q .agents/skills/material-design-3/scripts .agents/skills/material-design-3/evals tests
+
+  deterministic-tooling:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Validate machine-readable assets
+        run: |
+          python -m json.tool .agents/skills/material-design-3/assets/platform-capabilities.json > /dev/null
+          python -m json.tool .agents/skills/material-design-3/assets/source-snapshots.json > /dev/null
+          python -m json.tool .agents/skills/material-design-3/evals/results.schema.json > /dev/null
+      - name: Check source freshness
+        run: python .agents/skills/material-design-3/scripts/check_source_freshness.py --max-age-days 45
+      - name: Validate runtime audit syntax
+        run: node --check .agents/skills/material-design-3/scripts/audit_runtime.mjs
+      - name: Validate runtime audit dependency-free help
+        run: node .agents/skills/material-design-3/scripts/audit_runtime.mjs --help
+      - name: Validate result summarizer CLI
+        run: python .agents/skills/material-design-3/evals/summarize_results.py --help
 
   official-skill-spec:
     runs-on: ubuntu-latest
